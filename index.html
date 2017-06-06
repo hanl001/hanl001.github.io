@@ -111,8 +111,6 @@
                         
                             <li><a href="/Home">博客首页</a></li>
                         
-                            <li><a href="/FrontEndGuide">前端导航</a></li>
-                        
                             <li><a href="/tags">静心阅读</a></li>
                         
                             <li><a href="/tags/随笔">随笔</a></li>
@@ -176,8 +174,6 @@
                 
                     <li><a href="/Home">博客首页</a></li>
                 
-                    <li><a href="/FrontEndGuide">前端导航</a></li>
-                
                     <li><a href="/tags">静心阅读</a></li>
                 
                     <li><a href="/tags/随笔">随笔</a></li>
@@ -228,27 +224,18 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h6 id="基本篇"><a href="#基本篇" class="headerlink" title="基本篇"></a><strong>基本篇</strong></h6><ul>
-<li>创建本地仓库<br>1、创建文件<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mkdir test</div><div class="line">cd test</div><div class="line">touch README.md</div></pre></td></tr></table></figure>
+              <h2 id="基本篇"><a href="#基本篇" class="headerlink" title="基本篇"></a><strong>基本篇</strong></h2><h3 id="创建本地仓库"><a href="#创建本地仓库" class="headerlink" title="创建本地仓库"></a>创建本地仓库</h3><ol>
+<li><p>创建文件:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mkdir test</div><div class="line">cd test</div><div class="line">touch README.md</div></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>2、初始化git<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure></p>
-<p>3、提交到本地仓库<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m &quot;testMessage&quot;</div></pre></td></tr></table></figure></p>
-<ul>
-<li>本地仓库发布到远程<br>1、新建远程仓库<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">curl -u &apos;username&apos; https://api.github.com/user/repos -d &apos;&#123;&quot;name&quot;:&quot;test&quot;&#125;&apos;</div></pre></td></tr></table></figure>
+<li><p>初始化git:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>2、关联远程仓库(origin是git提供的仓库默认名，可自定义)<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git remote add origin gitAddress/RepoName</div></pre></td></tr></table></figure></p>
-<p>3、push到远程仓库<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git push origin master</div></pre></td></tr></table></figure></p>
-<hr>
-<p><br></p>
-<h6 id="zsh篇"><a href="#zsh篇" class="headerlink" title="zsh篇"></a><strong>zsh篇</strong></h6><p>探索过程：<br>1、 在oh-my-zsh的plugins下搜索git，找到几个可疑目录<br><img src="http://upload-images.jianshu.io/upload_images/3748868-73bde356d786d500.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图1.jpeg"><br>2、逐个目录一一探究、发现是<code>github</code>目录。<code>github</code><br>下的<code>github.plugin.zsh</code>如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/3748868-aecf97940c585bf1.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图2.jpeg"><br>我在这个文件里发现<code>empty_gh</code> <code>new_gh</code> <code>exist_gh</code> <code>git.io</code> 这几个方法，方法用途查看源码和注释一目了然，不再赘述。<br>3、接下来在 <code>.zshrc</code> 中的 <code>plugins</code> 里加入 <code>github</code> ，如下:</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/3748868-ad2d43c075b76d19.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图3.jpeg"></p>
-<p><code>:wq</code>之后执行 <code>source .zshrc</code><br>基本篇的创建只需  <code>empty_gh test</code> 即可完成</p>
-<p>而新建远程仓库我直接在 <code>github.plugin.zsh</code> 里加了一个方法:  <code>new_repo</code>,如下:</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/3748868-62297f5e83a8a384.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="new_repo.jpeg"></p>
-
+<li><p>提交到本地仓库:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m &quot;commit message&quot;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+          
       
       
     </div>
@@ -262,6 +249,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/21/git之用命令新建本地以及远程仓库/#more">更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -306,39 +297,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <hr>
-<ul>
-<li><p>用途:  用来监控app的日志,从此摆脱xcode的控制台</p>
-<p>  mac版界面如下:<br><img src="http://upload-images.jianshu.io/upload_images/3748868-18b014ca65bc18f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mac版qq客户端的日志"></p>
-</li>
-<li><p>使用步骤:</p>
-<ol>
-<li>安装 NSLogger Viewer MAC端的日志分析，通过网络可以将日志传进来 ，默认接受电脑所在局域网发出的所有日志<br>ps：所以当我安装NSLogger Viewer之后发现它监听到了macQQ的日志,看来macQQ也有使用NSLogger啊，哈哈</li>
-</ol>
-<ul>
-<li>在项目中加入NSLogger框架，支持pod</li>
-<li><p>导入<code>#import &quot;NSLogger.h&quot;</code>头文件<br><br><br>  <strong>(接下来是我的一些处理):</strong></p>
-<ul>
-<li><p>添加一个宏，自由切换xcode控制台和NSLogger </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> // 使用NSLogger打印:取消注释下一行;使用xcode控制台:注释下一行</div><div class="line">//#define NSLOGGER_CLIENT</div></pre></td></tr></table></figure>
-</li>
-<li><p>导入<code>NSLogger.h</code>时进行判断</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> #ifdef NSLOGGER_CLIENT</div><div class="line">   #import &quot;NSLogger.h&quot; //使用NSLogger</div><div class="line">#else</div><div class="line">    #ifdef DEBUG</div><div class="line">        #define LoggerError(level,...)                NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerApp(level, ...)                 NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerView(level,...)                 NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerService(level,...)              NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerModel(level,...)                NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerData(level,...)                 NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerNetwork(level,...)              NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerLocation(level,...)             NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerPush(level,...)                 NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerFile(level,...)                 NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerSharing(level,...)              NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerAd(level,...)                   NSLog(__VA_ARGS__)</div><div class="line">    #else</div><div class="line">        #define NSLog(...)                      while(0) &#123;&#125;</div><div class="line">        #define LoggerError(...)                while(0) &#123;&#125;</div><div class="line">        #define LoggerApp(level, ...)           while(0) &#123;&#125;</div><div class="line">        #define LoggerView(...)                 while(0) &#123;&#125;</div><div class="line">        #define LoggerService(...)              while(0) &#123;&#125;</div><div class="line">        #define LoggerModel(...)                while(0) &#123;&#125;</div><div class="line">        #define LoggerData(...)                 while(0) &#123;&#125;</div><div class="line">        #define LoggerNetwork(...)              while(0) &#123;&#125;</div><div class="line">        #define LoggerLocation(...)             while(0) &#123;&#125;</div><div class="line">        #define LoggerPush(...)                 while(0) &#123;&#125;</div><div class="line">        #define LoggerFile(...)                 while(0) &#123;&#125;</div><div class="line">        #define LoggerSharing(...)              while(0) &#123;&#125;</div><div class="line">        #define LoggerAd(...)                   while(0) &#123;&#125;</div><div class="line">    #endif</div><div class="line">#endif</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>###原理：<br>在<code>NSLogger.h</code>文件中定义了如下宏<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#define NSLog(...)                      LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;NSLog&quot;, 0, __VA_ARGS__)</div><div class="line">    #define LoggerError(level, ...)         LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Error&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerApp(level, ...)           LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;App&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerView(level, ...)          LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;View&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerService(level, ...)       LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Service&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerModel(level, ...)         LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Model&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerData(level, ...)          LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Data&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerNetwork(level, ...)       LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Network&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerLocation(level, ...)      LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Location&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerPush(level, ...)          LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Push&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerFile(level, ...)          LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;File&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerSharing(level, ...)       LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Sharing&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerAd(level, ...)            LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Ad and Stat&quot;, level, __VA_ARGS__)</div></pre></td></tr></table></figure></p>
-<p>其中<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#define NSLog(...)                      LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;NSLog&quot;, 0, __VA_ARGS__)</div></pre></td></tr></table></figure></p>
-<p>直接将所有的NSLog替换为了LogMessageF<br>进入LogMessage发现他是如下的一个方法<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">void LogMessageF(const char *filename, int lineNumber, const char *functionName, NSString *domain, int level, NSString *format, ...)</div><div class="line">&#123;</div><div class="line">	va_list args;</div><div class="line">	va_start(args, format);</div><div class="line">	LogMessageTo_internal(NULL, filename, lineNumber, functionName, domain, level, format, args);</div><div class="line">	va_end(args);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>其中<code>LogMessageTo_internal(NULL, filename, lineNumber, functionName, domain, level, format, args);</code> 就是向网络发送数据</p>
-<p>同时<code>NSLogger.h</code>文件中还定义了很多其他的宏，根据命名大概就可以猜到他们的用途吧<br>ps: 更多功能有待大家去探索，不想写2333~</p>
-<p>附一段网络请求单例方法代码(请忽略里面一大串恶心的东西，只是想说明一下NSLogger的使用):</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">-(void)sendRequest:(NSMutableDictionary *)mutableDic</div><div class="line">               url:(NSString *)url</div><div class="line">          progress:( void (^)(NSProgress *uploadProgress))uploadProgressBack</div><div class="line">         compelete:(void(^)(BOOL success, NSDictionary *responseObject))compelete &#123;</div><div class="line"></div><div class="line">    if (manager == nil) &#123;</div><div class="line">        manager = [AFHTTPSessionManager manager];</div><div class="line">    &#125;</div><div class="line">    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@&quot;text/html&quot;,@&quot;text/plain&quot;,@&quot;application/json&quot;,nil];</div><div class="line">    [manager.requestSerializer setValue:@&quot;ture&quot; forHTTPHeaderField:@&quot;ifmodified&quot;];</div><div class="line">     [manager.requestSerializer setValue:@&quot;ios&quot; forHTTPHeaderField:@&quot;app&quot;];</div><div class="line">    NSMutableDictionary *paramDic = nil;</div><div class="line">    if(mutableDic) &#123;</div><div class="line">        paramDic = [[NSMutableDictionary alloc] initWithDictionary:mutableDic];</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">        paramDic = [[NSMutableDictionary alloc] init];</div><div class="line">    &#125;</div><div class="line">    [paramDic setValue:[[JFUserInfo shareUserInfo] getToken] forKey:kUSERTOKE];</div><div class="line">    [paramDic setValue:[NSString appVersion] forKey:kCLIENTVERSION];</div><div class="line">  //使用NSLogger</div><div class="line">    LoggerService(2,@&quot;%@&quot;,url);</div><div class="line">    LoggerData(2,@&quot;paramDic = %@&quot;, paramDic);</div><div class="line"></div><div class="line">    [manager POST:url parameters:paramDic progress:^(NSProgress * _Nonnull uploadProgress) &#123;   </div><div class="line">        if (uploadProgressBack) &#123;</div><div class="line">            uploadProgressBack(uploadProgress);</div><div class="line">        &#125;</div><div class="line">    &#125; success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) &#123;</div><div class="line">        //使用NSLogger</div><div class="line">        LoggerData(3,@&quot;responseObject = %@&quot;, responseObject);</div><div class="line">        NSLog(@&quot;errmsg：%@&quot;,(NSDictionary *)responseObject[@&quot;errmsg&quot;]);</div><div class="line">        </div><div class="line">        NSDictionary *responseDic = (NSDictionary *)responseObject;</div><div class="line">        NSNumber *code =  responseDic[@&quot;errcode&quot;];</div><div class="line">        if ([code integerValue] == 2000001 || [code integerValue] == -4) &#123;//重新登录</div><div class="line">            NSLog(@&quot;错误请求：%@&quot;,responseDic[@&quot;errmsg&quot;]);</div><div class="line">            [[AppDelegate sharedAppDelegate] enterLoginUI];</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        if (compelete) &#123;</div><div class="line">            if ([code integerValue] == 0) &#123;</div><div class="line">                compelete(YES, responseDic);</div><div class="line">            &#125;else if ([code integerValue] &lt; 0)&#123;</div><div class="line">//                NSLog(@&quot;%@,%@错误请求：%@&quot;,mutableDic,url,responseDic[@&quot;errmsg&quot;]);</div><div class="line">                NSMutableDictionary * dic = [NSMutableDictionary dictionary];</div><div class="line">                [dic setValue:JFERRORMSG forKey:@&quot;errmsg&quot;];</div><div class="line">                [dic setValue:[NSNumber numberWithInt:-1] forKey:@&quot;errcode&quot;];</div><div class="line">                compelete(NO, dic);</div><div class="line">            &#125;else&#123;</div><div class="line">                compelete(NO, responseDic);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125; failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) &#123;</div><div class="line">//        if (compelete) &#123;</div><div class="line">            NSMutableDictionary * dic = [NSMutableDictionary dictionary];</div><div class="line">            [dic setValue:JFERRORMSG forKey:@&quot;errmsg&quot;];</div><div class="line">            [dic setValue:[NSNumber numberWithInt:-1] forKey:@&quot;errcode&quot;];</div><div class="line">            compelete(NO, dic);</div><div class="line">//        &#125;</div><div class="line">    &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+              <hr>
+<h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h3><p>用来监控app的日志,从此摆脱xcode的控制台,mac版界面如下:<br><img src="http://upload-images.jianshu.io/upload_images/3748868-18b014ca65bc18f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mac版qq客户端的日志"></p>
+          
       
       
     </div>
@@ -352,6 +313,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/14/NSLogger的使用/#more">更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -396,7 +361,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong>在研究block的类型之前，首先我们要知道c类语言的程序编译后在内存中的分布(由高位向低位排序):</strong></p>
+              <p><strong>在研究block的类型之前，首先我们要知道c类语言的程序编译后在内存中的分布(由高位向低位排序):</strong></p>
 <ol>
 <li><code>栈区</code>:局部变量</li>
 <li><code>堆区</code>:由”alloc”开辟的空间就是在堆区</li>
@@ -404,63 +369,8 @@
 <li><code>常量区</code>: 常量</li>
 <li><code>代码区</code>: 二进制代码段 </li>
 </ol>
-<p>####这里我们将MRC和ARC分开讨论：</p>
-<hr>
-<p>######1、在MRC下有三种类型的block</p>
-<ul>
-<li><p><strong><code>NSGlobalBlock:</code></strong>  位于内存全局区、不调用外部变量或者仅调用静态区常量区的”变量”</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">CGFloat gFloat = 1.2;</div><div class="line">NSString *gStr = @&quot;全局字符串&quot;;</div><div class="line">@implementation test  </div><div class="line">-(void)globalTest &#123; </div><div class="line">    //注:在本例中NSSting分别在内存中的哪个区域呢？</div><div class="line">    //1、不调用外部变量的block</div><div class="line">    void(^gblock1)(NSString *) = ^(NSString *str)&#123; </div><div class="line">         NSLog(@&quot;%@&quot;,str);</div><div class="line">     &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock1);</div><div class="line">    gblock1(@&quot;传入字符串常量&quot;);</div><div class="line">    //2、仅调用全局变量的block</div><div class="line">    void(^gblock2)(void) = ^&#123; </div><div class="line">      NSLog(@&quot;%lf&quot;,gFloat);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock2);</div><div class="line">    gblock2();</div><div class="line">    void(^gblock3)(void) = ^&#123; </div><div class="line">      NSLog(@&quot;%@&quot;,gStr);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock3);</div><div class="line">    gblock3();</div><div class="line">   //3、仅调用静态变量的block</div><div class="line">    static CGFloat sFloat = 2.1;</div><div class="line">    void(^gblock4)(void) = ^&#123;</div><div class="line">      NSLog(@&quot;%lf&quot;,sFloat);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock4);</div><div class="line">    gblock4();</div><div class="line">    static NSString *staStr = @&quot;静态字符串&quot;;</div><div class="line">    void(^gblock5)(void) = ^&#123;</div><div class="line">      NSLog(@&quot;%@&quot;,staStr);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock5);</div><div class="line">    gblock5();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>控制台输出:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 14:50:22.928972 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001050&gt;</div><div class="line">2016-12-06 14:50:22.929176 test_demo[18845:866060] 传入字符串常量</div><div class="line">2016-12-06 14:50:22.929221 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001090&gt;</div><div class="line">2016-12-06 14:50:22.929246 test_demo[18845:866060] 1.200000</div><div class="line">2016-12-06 14:50:22.929268 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x1000010d0&gt;</div><div class="line">2016-12-06 14:50:22.929288 test_demo[18845:866060] 全局字符串</div><div class="line">2016-12-06 14:50:22.929307 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001110&gt;</div><div class="line">2016-12-06 14:50:22.929320 test_demo[18845:866060] 2.100000</div><div class="line">2016-12-06 14:50:22.929338 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001150&gt;</div><div class="line">2016-12-06 14:50:22.929354 test_demo[18845:866060] 静态字符串</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><br></p>
-<ul>
-<li><p><strong><code>NSStackBlock:</code></strong> 位于内存栈区、仅调用栈区变量</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">-(void)stackTest &#123;</div><div class="line">    //局部变量</div><div class="line">    CGFloat sFloat = 1.1;</div><div class="line">    void(^sBlock1)(void) = ^&#123;</div><div class="line">      NSLog(@&quot;%lf&quot;,sFloat);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,sBlock1);</div><div class="line">    sBlock1();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>控制台输出:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 15:04:04.606908 test_demo[18880:873406] &lt;__NSStackBlock__: 0x7fff5fbff6d8&gt;</div><div class="line">2016-12-06 15:04:04.607076 test_demo[18880:873406] 1.100000</div></pre></td></tr></table></figure>
-</li>
-<li><p><strong><code>NSMallocBlock:</code></strong> 位于内存堆区、由栈区copy到堆区</p>
-<pre> -(void)mallocTest {
-//局部变量
-CGFloat sFloat = 1.1;<br>
-void(^sBlock1)(void) = ^{<br>        NSLog(@"%lf",sFloat);
-};
-//    NSLog(@"%@",sBlock1);
-//    sBlock1();<br>
-void(^mBlock1)(void) = [sBlock1 copy];
-NSLog(@"%@",mBlock1);<br>
-//@property(copy,nonatomic)void(^mBlock2)(void);
-self.mBlock2 = sBlock1;
-NSLog(@"%@",self.mBlock2);
-}</pre></li>
-<li><code>控制台输出:</code><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 15:37:07.306385 test_demo[28582:914325] &lt;__NSMallocBlock__: 0x100402f00&gt;</div><div class="line">2016-12-06 15:37:07.306699 test_demo[28582:914325] &lt;__NSMallocBlock__: 0x100600000&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<p>######2、在ARC下，仅存在 <code>NSGlobalBlock</code> 、<code>NSMallocBlock</code> 两种block<br><br>我们切换到arc环境，并且将 <code>mallocTest</code> 中的如下代码注释取消<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//    NSLog(@&quot;%@&quot;,sBlock1);</div><div class="line">//    sBlock1();</div></pre></td></tr></table></figure></p>
-<p>运行得到输出结果：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 15:52:42.884091 test_demo[35541:942156] &lt;__NSMallocBlock__: 0x100502eb0&gt;</div><div class="line">2016-12-06 15:52:42.884379 test_demo[35541:942156] 1.100000</div><div class="line">2016-12-06 15:52:42.884416 test_demo[35541:942156] &lt;__NSMallocBlock__: 0x100502eb0&gt;</div><div class="line">2016-12-06 15:52:42.884446 test_demo[35541:942156] &lt;__NSMallocBlock__: 0x100502eb0&gt;</div></pre></td></tr></table></figure></p>
-<p>由此可以判断，在arc下没有 <code>NSStackBlock</code> 类型变量、并且 <code>copy</code> 操作只是对堆区 <code>block</code> 进行了一次引用，既然如此我接着对  <code>NSGlobalBlock</code> 、<code>NSMallocBlock</code> 进行copy操作：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">static NSString *staStr = @&quot;静态字符串&quot;;</div><div class="line">void(^gblock5)(void) = ^&#123;</div><div class="line">    NSLog(@&quot;%@&quot;,staStr);</div><div class="line">&#125;;</div><div class="line">NSLog(@&quot;%@&quot;,gblock5);</div><div class="line">gblock5();</div><div class="line">void(^copyBlock)(void) = [gblock5 copy];</div><div class="line">NSLog(@&quot;%@&quot;,copyBlock);</div></pre></td></tr></table></figure></p>
-<ul>
-<li><code>控制台输出:</code><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 16:24:36.832399 test_demo[35671:957646] &lt;__NSGlobalBlock__: 0x100002170&gt;</div><div class="line">2016-12-06 16:24:36.832415 test_demo[35671:957646] 静态字符串</div><div class="line">2016-12-06 16:24:36.832438 test_demo[35671:957646] &lt;__NSGlobalBlock__: 0x100002170&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">void(^mBlock1)(void) = [sBlock1 copy];</div><div class="line">NSLog(@&quot;%@&quot;,mBlock1);</div><div class="line">void(^copyBlock)(void) = [mBlock1 copy];</div><div class="line">NSLog(@&quot;%@&quot;,copyBlock);</div></pre></td></tr></table></figure>
-<ul>
-<li><code>控制台输出:</code><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 16:27:10.688490 test_demo[35702:959578] &lt;__NSMallocBlock__: 0x1006000c0&gt;</div><div class="line">2016-12-06 16:27:10.688571 test_demo[35702:959578] &lt;__NSMallocBlock__: 0x1006000c0&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h5 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h5><ol>
-<li>当block中没有引用任何外部变量时或者仅仅调用静态区变量时，编译器直接将block放在静态区(减少堆区的占用有利于性能的)</li>
-<li>copy 操作对将NSStackBlock拷贝到堆区、对另外两种类型只是强引用</li>
-<li>arc下是没有NSStackBlock类型block的(block被当做对象处理)</li>
-</ol>
-<p>附<a href="https://github.com/hanl001/blockType_test" target="_blank" rel="external">测试代码</a></p>
-
+<p>这里我们将MRC和ARC分开讨论：</p>
+          
       
       
     </div>
@@ -474,6 +384,10 @@ NSLog(@"%@",self.mBlock2);
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Block/">Block</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/06/Objective-C中Block的类型/#more">更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

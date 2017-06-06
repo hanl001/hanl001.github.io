@@ -5,21 +5,21 @@
   
   <title>git之用命令新建本地以及远程仓库 | 冬天的冰激凌</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基本篇 创建本地仓库1、创建文件mkdir testcd testtouch README.md   2、初始化gitgit init 3、提交到本地仓库git add .git commit -m &amp;quot;testMessage&amp;quot;  本地仓库发布到远程1、新建远程仓库curl -u &amp;apos;username&amp;apos; https://api.github.com/user/r">
+  <meta name="description" content="基本篇创建本地仓库 创建文件:  mkdir testcd testtouch README.md  初始化git:  git init  提交到本地仓库:  git add .git commit -m &amp;quot;commit message&amp;quot;">
 <meta name="keywords" content="Tools">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git之用命令新建本地以及远程仓库">
 <meta property="og:url" content="https://hanl001.github.io/2016/12/21/git之用命令新建本地以及远程仓库/index.html">
 <meta property="og:site_name" content="冬天的冰激凌">
-<meta property="og:description" content="基本篇 创建本地仓库1、创建文件mkdir testcd testtouch README.md   2、初始化gitgit init 3、提交到本地仓库git add .git commit -m &amp;quot;testMessage&amp;quot;  本地仓库发布到远程1、新建远程仓库curl -u &amp;apos;username&amp;apos; https://api.github.com/user/r">
+<meta property="og:description" content="基本篇创建本地仓库 创建文件:  mkdir testcd testtouch README.md  初始化git:  git init  提交到本地仓库:  git add .git commit -m &amp;quot;commit message&amp;quot;">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3748868-73bde356d786d500.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3748868-aecf97940c585bf1.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3748868-ad2d43c075b76d19.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3748868-62297f5e83a8a384.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-03T03:18:00.000Z">
+<meta property="og:updated_time" content="2017-06-06T04:02:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git之用命令新建本地以及远程仓库">
-<meta name="twitter:description" content="基本篇 创建本地仓库1、创建文件mkdir testcd testtouch README.md   2、初始化gitgit init 3、提交到本地仓库git add .git commit -m &amp;quot;testMessage&amp;quot;  本地仓库发布到远程1、新建远程仓库curl -u &amp;apos;username&amp;apos; https://api.github.com/user/r">
+<meta name="twitter:description" content="基本篇创建本地仓库 创建文件:  mkdir testcd testtouch README.md  初始化git:  git init  提交到本地仓库:  git add .git commit -m &amp;quot;commit message&amp;quot;">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3748868-73bde356d786d500.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="冬天的冰激凌" type="application/atom+xml">
@@ -115,8 +115,6 @@
                         
                             <li><a href="/Home">博客首页</a></li>
                         
-                            <li><a href="/FrontEndGuide">前端导航</a></li>
-                        
                             <li><a href="/tags">静心阅读</a></li>
                         
                             <li><a href="/tags/随笔">随笔</a></li>
@@ -180,8 +178,6 @@
                 
                     <li><a href="/Home">博客首页</a></li>
                 
-                    <li><a href="/FrontEndGuide">前端导航</a></li>
-                
                     <li><a href="/tags">静心阅读</a></li>
                 
                     <li><a href="/tags/随笔">随笔</a></li>
@@ -241,22 +237,39 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h6 id="基本篇"><a href="#基本篇" class="headerlink" title="基本篇"></a><strong>基本篇</strong></h6><ul>
-<li>创建本地仓库<br>1、创建文件<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mkdir test</div><div class="line">cd test</div><div class="line">touch README.md</div></pre></td></tr></table></figure>
+        <h2 id="基本篇"><a href="#基本篇" class="headerlink" title="基本篇"></a><strong>基本篇</strong></h2><h3 id="创建本地仓库"><a href="#创建本地仓库" class="headerlink" title="创建本地仓库"></a>创建本地仓库</h3><ol>
+<li><p>创建文件:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mkdir test</div><div class="line">cd test</div><div class="line">touch README.md</div></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>2、初始化git<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure></p>
-<p>3、提交到本地仓库<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m &quot;testMessage&quot;</div></pre></td></tr></table></figure></p>
-<ul>
-<li>本地仓库发布到远程<br>1、新建远程仓库<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">curl -u &apos;username&apos; https://api.github.com/user/repos -d &apos;&#123;&quot;name&quot;:&quot;test&quot;&#125;&apos;</div></pre></td></tr></table></figure>
+<li><p>初始化git:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>2、关联远程仓库(origin是git提供的仓库默认名，可自定义)<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git remote add origin gitAddress/RepoName</div></pre></td></tr></table></figure></p>
-<p>3、push到远程仓库<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git push origin master</div></pre></td></tr></table></figure></p>
+<li><p>提交到本地仓库:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m &quot;commit message&quot;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+  <a id="more"></a>
+<h3 id="本地仓库发布到远程"><a href="#本地仓库发布到远程" class="headerlink" title="本地仓库发布到远程"></a>本地仓库发布到远程</h3><ol>
+<li><p>新建远程仓库:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">curl -u &apos;username&apos; https://api.github.com/user/repos -d &apos;&#123;&quot;name&quot;:&quot;test&quot;&#125;&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>关联远程仓库(origin是git提供的仓库默认名，可自定义):</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git remote add origin gitAddress/RepoName</div></pre></td></tr></table></figure>
+</li>
+<li><p>push到远程仓库:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git push origin master</div></pre></td></tr></table></figure>
+</li>
+</ol>
 <hr>
-<p><br></p>
-<h6 id="zsh篇"><a href="#zsh篇" class="headerlink" title="zsh篇"></a><strong>zsh篇</strong></h6><p>探索过程：<br>1、 在oh-my-zsh的plugins下搜索git，找到几个可疑目录<br><img src="http://upload-images.jianshu.io/upload_images/3748868-73bde356d786d500.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图1.jpeg"><br>2、逐个目录一一探究、发现是<code>github</code>目录。<code>github</code><br>下的<code>github.plugin.zsh</code>如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/3748868-aecf97940c585bf1.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图2.jpeg"><br>我在这个文件里发现<code>empty_gh</code> <code>new_gh</code> <code>exist_gh</code> <code>git.io</code> 这几个方法，方法用途查看源码和注释一目了然，不再赘述。<br>3、接下来在 <code>.zshrc</code> 中的 <code>plugins</code> 里加入 <code>github</code> ，如下:</p>
+<h2 id="zsh篇"><a href="#zsh篇" class="headerlink" title="zsh篇"></a><strong>zsh篇</strong></h2><p>探索过程：</p>
+<ol>
+<li>在oh-my-zsh的plugins下搜索git，找到几个可疑目录<br><img src="http://upload-images.jianshu.io/upload_images/3748868-73bde356d786d500.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图1.jpeg"></li>
+<li>逐个目录一一探究、发现是<code>github</code>目录。<code>github</code><br>下的<code>github.plugin.zsh</code>如下：</li>
+</ol>
+<p><img src="http://upload-images.jianshu.io/upload_images/3748868-aecf97940c585bf1.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图2.jpeg"><br>我在这个文件里发现<code>empty_gh</code> <code>new_gh</code> <code>exist_gh</code> <code>git.io</code> 这几个方法，方法用途查看源码和注释一目了然，不再赘述。</p>
+<ol>
+<li>接下来在 <code>.zshrc</code> 中的 <code>plugins</code> 里加入 <code>github</code> ，如下:</li>
+</ol>
 <p><img src="http://upload-images.jianshu.io/upload_images/3748868-ad2d43c075b76d19.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图3.jpeg"></p>
 <p><code>:wq</code>之后执行 <code>source .zshrc</code><br>基本篇的创建只需  <code>empty_gh test</code> 即可完成</p>
 <p>而新建远程仓库我直接在 <code>github.plugin.zsh</code> 里加了一个方法:  <code>new_repo</code>,如下:</p>
@@ -273,7 +286,7 @@
         <p><span>本文标题:</span><a href="/2016/12/21/git之用命令新建本地以及远程仓库/">git之用命令新建本地以及远程仓库</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 hanl001 的个人博客">hanl001</a></p>
         <p><span>发布时间:</span>2016年12月21日 - 12时58分</p>
-        <p><span>最后更新:</span>2017年06月03日 - 11时18分</p>
+        <p><span>最后更新:</span>2017年06月06日 - 12时02分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/12/21/git之用命令新建本地以及远程仓库/" title="git之用命令新建本地以及远程仓库">https://hanl001.github.io/2016/12/21/git之用命令新建本地以及远程仓库/</a>
             <span class="copy-path" data-clipboard-text="原文: https://hanl001.github.io/2016/12/21/git之用命令新建本地以及远程仓库/　　作者: hanl001" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -302,7 +315,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#基本篇"><span class="toc-number">1.</span> <span class="toc-text">基本篇</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#zsh篇"><span class="toc-number">2.</span> <span class="toc-text">zsh篇</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本篇"><span class="toc-number">1.</span> <span class="toc-text">基本篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建本地仓库"><span class="toc-number">1.1.</span> <span class="toc-text">创建本地仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地仓库发布到远程"><span class="toc-number">1.2.</span> <span class="toc-text">本地仓库发布到远程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zsh篇"><span class="toc-number">2.</span> <span class="toc-text">zsh篇</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -353,11 +366,11 @@
 <script>
     var gitment = new Gitment({
       id: window.location.pathname,
-      owner: 'luuman',
-      repo: 'luuman.github.io',
+      owner: 'hanl001',
+      repo: 'hanl001.gihub.io',
       oauth: {
-        client_id: 'null',
-        client_secret: 'null',
+        client_id: 'df999ed9c94ae95aae79',
+        client_secret: 'ff2b434e76a962ee2b3a4b6c0797f3dadcc309a0',
       },
     })
     gitment.render('gitments')

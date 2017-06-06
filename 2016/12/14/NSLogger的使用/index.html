@@ -5,18 +5,18 @@
   
   <title>NSLogger的使用 | 冬天的冰激凌</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用途:  用来监控app的日志,从此摆脱xcode的控制台   mac版界面如下:  使用步骤:  安装 NSLogger Viewer MAC端的日志分析，通过网络可以将日志传进来 ，默认接受电脑所在局域网发出的所有日志ps：所以当我安装NSLogger Viewer之后发现它监听到了macQQ的日志,看来macQQ也有使用NSLogger啊，哈哈   在项目中加入NSLogger框架，支持">
+  <meta name="description" content="用途用来监控app的日志,从此摆脱xcode的控制台,mac版界面如下:">
 <meta name="keywords" content="Tools">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NSLogger的使用">
 <meta property="og:url" content="https://hanl001.github.io/2016/12/14/NSLogger的使用/index.html">
 <meta property="og:site_name" content="冬天的冰激凌">
-<meta property="og:description" content="用途:  用来监控app的日志,从此摆脱xcode的控制台   mac版界面如下:  使用步骤:  安装 NSLogger Viewer MAC端的日志分析，通过网络可以将日志传进来 ，默认接受电脑所在局域网发出的所有日志ps：所以当我安装NSLogger Viewer之后发现它监听到了macQQ的日志,看来macQQ也有使用NSLogger啊，哈哈   在项目中加入NSLogger框架，支持">
+<meta property="og:description" content="用途用来监控app的日志,从此摆脱xcode的控制台,mac版界面如下:">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3748868-18b014ca65bc18f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-03T03:15:20.000Z">
+<meta property="og:updated_time" content="2017-06-06T04:19:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NSLogger的使用">
-<meta name="twitter:description" content="用途:  用来监控app的日志,从此摆脱xcode的控制台   mac版界面如下:  使用步骤:  安装 NSLogger Viewer MAC端的日志分析，通过网络可以将日志传进来 ，默认接受电脑所在局域网发出的所有日志ps：所以当我安装NSLogger Viewer之后发现它监听到了macQQ的日志,看来macQQ也有使用NSLogger啊，哈哈   在项目中加入NSLogger框架，支持">
+<meta name="twitter:description" content="用途用来监控app的日志,从此摆脱xcode的控制台,mac版界面如下:">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3748868-18b014ca65bc18f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="冬天的冰激凌" type="application/atom+xml">
@@ -112,8 +112,6 @@
                         
                             <li><a href="/Home">博客首页</a></li>
                         
-                            <li><a href="/FrontEndGuide">前端导航</a></li>
-                        
                             <li><a href="/tags">静心阅读</a></li>
                         
                             <li><a href="/tags/随笔">随笔</a></li>
@@ -177,8 +175,6 @@
                 
                     <li><a href="/Home">博客首页</a></li>
                 
-                    <li><a href="/FrontEndGuide">前端导航</a></li>
-                
                     <li><a href="/tags">静心阅读</a></li>
                 
                     <li><a href="/tags/随笔">随笔</a></li>
@@ -239,33 +235,26 @@
       
           
         <hr>
-<ul>
-<li><p>用途:  用来监控app的日志,从此摆脱xcode的控制台</p>
-<p>  mac版界面如下:<br><img src="http://upload-images.jianshu.io/upload_images/3748868-18b014ca65bc18f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mac版qq客户端的日志"></p>
-</li>
-<li><p>使用步骤:</p>
-<ol>
-<li>安装 NSLogger Viewer MAC端的日志分析，通过网络可以将日志传进来 ，默认接受电脑所在局域网发出的所有日志<br>ps：所以当我安装NSLogger Viewer之后发现它监听到了macQQ的日志,看来macQQ也有使用NSLogger啊，哈哈</li>
-</ol>
-<ul>
-<li>在项目中加入NSLogger框架，支持pod</li>
-<li><p>导入<code>#import &quot;NSLogger.h&quot;</code>头文件<br><br><br>  <strong>(接下来是我的一些处理):</strong></p>
-<ul>
-<li><p>添加一个宏，自由切换xcode控制台和NSLogger </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> // 使用NSLogger打印:取消注释下一行;使用xcode控制台:注释下一行</div><div class="line">//#define NSLOGGER_CLIENT</div></pre></td></tr></table></figure>
+<h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h3><p>用来监控app的日志,从此摆脱xcode的控制台,mac版界面如下:<br><img src="http://upload-images.jianshu.io/upload_images/3748868-18b014ca65bc18f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mac版qq客户端的日志"></p>
+<a id="more"></a>
+<h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤:"></a>使用步骤:</h3><h4 id="安装-NSLogger-Viewer-MAC端"><a href="#安装-NSLogger-Viewer-MAC端" class="headerlink" title="安装 NSLogger Viewer MAC端"></a>安装 NSLogger Viewer MAC端</h4><p>  当我安装NSLogger Viewer之后发现它监听到了macQQ的日志,看来macQQ也有使用NSLogger</p>
+<h4 id="在项目中加入NSLogger框架"><a href="#在项目中加入NSLogger框架" class="headerlink" title="在项目中加入NSLogger框架"></a>在项目中加入NSLogger框架</h4><p>在podFile中添加<code>pod &#39;NSLogger&#39;</code>之后执行 <code>pod install</code> ;或者手动拖入到项目</p>
+<h4 id="在项目中使用"><a href="#在项目中使用" class="headerlink" title="在项目中使用"></a>在项目中使用</h4><p>在必要的地方添加<code>#import &quot;NSLogger.h&quot;</code>头文件即可</p>
+<h4 id="我的一些处理-供参考"><a href="#我的一些处理-供参考" class="headerlink" title="我的一些处理(供参考)"></a>我的一些处理(供参考)</h4><ol>
+<li><p>添加一个宏，自由切换xcode控制台和NSLogger    </p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 使用NSLogger打印:取消注释下一行;使用xcode控制台:注释下一行</div><div class="line">//#define NSLOGGER_CLIENT</div></pre></td></tr></table></figure>
 </li>
 <li><p>导入<code>NSLogger.h</code>时进行判断</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> #ifdef NSLOGGER_CLIENT</div><div class="line">   #import &quot;NSLogger.h&quot; //使用NSLogger</div><div class="line">#else</div><div class="line">    #ifdef DEBUG</div><div class="line">        #define LoggerError(level,...)                NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerApp(level, ...)                 NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerView(level,...)                 NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerService(level,...)              NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerModel(level,...)                NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerData(level,...)                 NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerNetwork(level,...)              NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerLocation(level,...)             NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerPush(level,...)                 NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerFile(level,...)                 NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerSharing(level,...)              NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerAd(level,...)                   NSLog(__VA_ARGS__)</div><div class="line">    #else</div><div class="line">        #define NSLog(...)                      while(0) &#123;&#125;</div><div class="line">        #define LoggerError(...)                while(0) &#123;&#125;</div><div class="line">        #define LoggerApp(level, ...)           while(0) &#123;&#125;</div><div class="line">        #define LoggerView(...)                 while(0) &#123;&#125;</div><div class="line">        #define LoggerService(...)              while(0) &#123;&#125;</div><div class="line">        #define LoggerModel(...)                while(0) &#123;&#125;</div><div class="line">        #define LoggerData(...)                 while(0) &#123;&#125;</div><div class="line">        #define LoggerNetwork(...)              while(0) &#123;&#125;</div><div class="line">        #define LoggerLocation(...)             while(0) &#123;&#125;</div><div class="line">        #define LoggerPush(...)                 while(0) &#123;&#125;</div><div class="line">        #define LoggerFile(...)                 while(0) &#123;&#125;</div><div class="line">        #define LoggerSharing(...)              while(0) &#123;&#125;</div><div class="line">        #define LoggerAd(...)                   while(0) &#123;&#125;</div><div class="line">    #endif</div><div class="line">#endif</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#ifdef NSLOGGER_CLIENT</div><div class="line">    #import &quot;NSLogger.h&quot; //使用NSLogger</div><div class="line">#else</div><div class="line">    #ifdef DEBUG</div><div class="line">        #define LoggerError(level,...)                NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerApp(level, ...)                 NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerView(level,...)                 NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerService(level,...)              NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerModel(level,...)                NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerData(level,...)                 NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerNetwork(level,...)              NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerLocation(level,...)             NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerPush(level,...)                 NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerFile(level,...)                 NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerSharing(level,...)              NSLog(__VA_ARGS__)</div><div class="line">        #define LoggerAd(level,...)                   NSLog(__VA_ARGS__)</div><div class="line">    #else</div><div class="line">        #define NSLog(...)                      while(0) &#123;&#125;</div><div class="line">        #define LoggerError(...)                while(0) &#123;&#125;</div><div class="line">        #define LoggerApp(level, ...)           while(0) &#123;&#125;</div><div class="line">        #define LoggerView(...)                 while(0) &#123;&#125;</div><div class="line">        #define LoggerService(...)              while(0) &#123;&#125;</div><div class="line">        #define LoggerModel(...)                while(0) &#123;&#125;</div><div class="line">        #define LoggerData(...)                 while(0) &#123;&#125;</div><div class="line">        #define LoggerNetwork(...)              while(0) &#123;&#125;</div><div class="line">        #define LoggerLocation(...)             while(0) &#123;&#125;</div><div class="line">        #define LoggerPush(...)                 while(0) &#123;&#125;</div><div class="line">        #define LoggerFile(...)                 while(0) &#123;&#125;</div><div class="line">        #define LoggerSharing(...)              while(0) &#123;&#125;</div><div class="line">        #define LoggerAd(...)                   while(0) &#123;&#125;</div><div class="line">    #endif</div><div class="line">#endif</div></pre></td></tr></table></figure>
 </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+</ol>
 <hr>
-<p>###原理：<br>在<code>NSLogger.h</code>文件中定义了如下宏<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#define NSLog(...)                      LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;NSLog&quot;, 0, __VA_ARGS__)</div><div class="line">    #define LoggerError(level, ...)         LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Error&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerApp(level, ...)           LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;App&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerView(level, ...)          LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;View&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerService(level, ...)       LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Service&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerModel(level, ...)         LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Model&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerData(level, ...)          LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Data&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerNetwork(level, ...)       LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Network&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerLocation(level, ...)      LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Location&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerPush(level, ...)          LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Push&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerFile(level, ...)          LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;File&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerSharing(level, ...)       LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Sharing&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerAd(level, ...)            LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Ad and Stat&quot;, level, __VA_ARGS__)</div></pre></td></tr></table></figure></p>
-<p>其中<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#define NSLog(...)                      LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;NSLog&quot;, 0, __VA_ARGS__)</div></pre></td></tr></table></figure></p>
-<p>直接将所有的NSLog替换为了LogMessageF<br>进入LogMessage发现他是如下的一个方法<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">void LogMessageF(const char *filename, int lineNumber, const char *functionName, NSString *domain, int level, NSString *format, ...)</div><div class="line">&#123;</div><div class="line">	va_list args;</div><div class="line">	va_start(args, format);</div><div class="line">	LogMessageTo_internal(NULL, filename, lineNumber, functionName, domain, level, format, args);</div><div class="line">	va_end(args);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>在<code>NSLogger.h</code>文件中定义了如下宏</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#define NSLog(...)                      LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;NSLog&quot;, 0, __VA_ARGS__)</div><div class="line">    #define LoggerError(level, ...)         LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Error&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerApp(level, ...)           LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;App&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerView(level, ...)          LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;View&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerService(level, ...)       LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Service&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerModel(level, ...)         LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Model&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerData(level, ...)          LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Data&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerNetwork(level, ...)       LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Network&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerLocation(level, ...)      LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Location&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerPush(level, ...)          LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Push&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerFile(level, ...)          LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;File&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerSharing(level, ...)       LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Sharing&quot;, level, __VA_ARGS__)</div><div class="line">    #define LoggerAd(level, ...)            LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;Ad and Stat&quot;, level, __VA_ARGS__)</div></pre></td></tr></table></figure>
+<p>其中</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#define NSLog(...)                      LogMessageF(__FILE__, __LINE__, __FUNCTION__, @&quot;NSLog&quot;, 0, __VA_ARGS__)</div></pre></td></tr></table></figure>
+<p>这里直接将所有的NSLog替换为了LogMessageF<br>然后查看LogMessageF的实现</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">void LogMessageF(const char *filename, int lineNumber, const char *functionName, NSString *domain, int level, NSString *format, ...)</div><div class="line">&#123;</div><div class="line">	va_list args;</div><div class="line">	va_start(args, format);</div><div class="line">	LogMessageTo_internal(NULL, filename, lineNumber, functionName, domain, level, format, args);</div><div class="line">	va_end(args);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>其中<code>LogMessageTo_internal(NULL, filename, lineNumber, functionName, domain, level, format, args);</code> 就是向网络发送数据</p>
 <p>同时<code>NSLogger.h</code>文件中还定义了很多其他的宏，根据命名大概就可以猜到他们的用途吧<br>ps: 更多功能有待大家去探索，不想写2333~</p>
 <p>附一段网络请求单例方法代码(请忽略里面一大串恶心的东西，只是想说明一下NSLogger的使用):</p>
@@ -282,7 +271,7 @@
         <p><span>本文标题:</span><a href="/2016/12/14/NSLogger的使用/">NSLogger的使用</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 hanl001 的个人博客">hanl001</a></p>
         <p><span>发布时间:</span>2016年12月14日 - 11时23分</p>
-        <p><span>最后更新:</span>2017年06月03日 - 11时15分</p>
+        <p><span>最后更新:</span>2017年06月06日 - 12时19分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/12/14/NSLogger的使用/" title="NSLogger的使用">https://hanl001.github.io/2016/12/14/NSLogger的使用/</a>
             <span class="copy-path" data-clipboard-text="原文: https://hanl001.github.io/2016/12/14/NSLogger的使用/　　作者: hanl001" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -320,7 +309,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#用途"><span class="toc-number">1.</span> <span class="toc-text">用途</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用步骤"><span class="toc-number">2.</span> <span class="toc-text">使用步骤:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-NSLogger-Viewer-MAC端"><span class="toc-number">2.1.</span> <span class="toc-text">安装 NSLogger Viewer MAC端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在项目中加入NSLogger框架"><span class="toc-number">2.2.</span> <span class="toc-text">在项目中加入NSLogger框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在项目中使用"><span class="toc-number">2.3.</span> <span class="toc-text">在项目中使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#我的一些处理-供参考"><span class="toc-number">2.4.</span> <span class="toc-text">我的一些处理(供参考)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原理"><span class="toc-number">3.</span> <span class="toc-text">原理</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -371,11 +360,11 @@
 <script>
     var gitment = new Gitment({
       id: window.location.pathname,
-      owner: 'luuman',
-      repo: 'luuman.github.io',
+      owner: 'hanl001',
+      repo: 'hanl001.gihub.io',
       oauth: {
-        client_id: 'null',
-        client_secret: 'null',
+        client_id: 'df999ed9c94ae95aae79',
+        client_secret: 'ff2b434e76a962ee2b3a4b6c0797f3dadcc309a0',
       },
     })
     gitment.render('gitments')

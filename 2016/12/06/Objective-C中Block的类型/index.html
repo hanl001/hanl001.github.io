@@ -5,17 +5,17 @@
   
   <title>Objective-C中Block的类型 | 冬天的冰激凌</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在研究block的类型之前，首先我们要知道c类语言的程序编译后在内存中的分布(由高位向低位排序):  栈区:局部变量 堆区:由”alloc”开辟的空间就是在堆区 静态区(全局区): 静态变量、 全局变量（注:未初始化的在bss） 常量区: 常量 代码区: 二进制代码段   ####这里我们将MRC和ARC分开讨论：  ######1、在MRC下有三种类型的block  NSGlobalBlock:">
+  <meta name="description" content="在研究block的类型之前，首先我们要知道c类语言的程序编译后在内存中的分布(由高位向低位排序):  栈区:局部变量 堆区:由”alloc”开辟的空间就是在堆区 静态区(全局区): 静态变量、 全局变量（注:未初始化的在bss） 常量区: 常量 代码区: 二进制代码段   这里我们将MRC和ARC分开讨论：">
 <meta name="keywords" content="Block">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Objective-C中Block的类型">
 <meta property="og:url" content="https://hanl001.github.io/2016/12/06/Objective-C中Block的类型/index.html">
 <meta property="og:site_name" content="冬天的冰激凌">
-<meta property="og:description" content="在研究block的类型之前，首先我们要知道c类语言的程序编译后在内存中的分布(由高位向低位排序):  栈区:局部变量 堆区:由”alloc”开辟的空间就是在堆区 静态区(全局区): 静态变量、 全局变量（注:未初始化的在bss） 常量区: 常量 代码区: 二进制代码段   ####这里我们将MRC和ARC分开讨论：  ######1、在MRC下有三种类型的block  NSGlobalBlock:">
-<meta property="og:updated_time" content="2017-06-03T03:10:28.000Z">
+<meta property="og:description" content="在研究block的类型之前，首先我们要知道c类语言的程序编译后在内存中的分布(由高位向低位排序):  栈区:局部变量 堆区:由”alloc”开辟的空间就是在堆区 静态区(全局区): 静态变量、 全局变量（注:未初始化的在bss） 常量区: 常量 代码区: 二进制代码段   这里我们将MRC和ARC分开讨论：">
+<meta property="og:updated_time" content="2017-06-06T04:18:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C中Block的类型">
-<meta name="twitter:description" content="在研究block的类型之前，首先我们要知道c类语言的程序编译后在内存中的分布(由高位向低位排序):  栈区:局部变量 堆区:由”alloc”开辟的空间就是在堆区 静态区(全局区): 静态变量、 全局变量（注:未初始化的在bss） 常量区: 常量 代码区: 二进制代码段   ####这里我们将MRC和ARC分开讨论：  ######1、在MRC下有三种类型的block  NSGlobalBlock:">
+<meta name="twitter:description" content="在研究block的类型之前，首先我们要知道c类语言的程序编译后在内存中的分布(由高位向低位排序):  栈区:局部变量 堆区:由”alloc”开辟的空间就是在堆区 静态区(全局区): 静态变量、 全局变量（注:未初始化的在bss） 常量区: 常量 代码区: 二进制代码段   这里我们将MRC和ARC分开讨论：">
   
     <link rel="alternative" href="/atom.xml" title="冬天的冰激凌" type="application/atom+xml">
   
@@ -110,8 +110,6 @@
                         
                             <li><a href="/Home">博客首页</a></li>
                         
-                            <li><a href="/FrontEndGuide">前端导航</a></li>
-                        
                             <li><a href="/tags">静心阅读</a></li>
                         
                             <li><a href="/tags/随笔">随笔</a></li>
@@ -174,8 +172,6 @@
                 <ul>
                 
                     <li><a href="/Home">博客首页</a></li>
-                
-                    <li><a href="/FrontEndGuide">前端导航</a></li>
                 
                     <li><a href="/tags">静心阅读</a></li>
                 
@@ -244,57 +240,25 @@
 <li><code>常量区</code>: 常量</li>
 <li><code>代码区</code>: 二进制代码段 </li>
 </ol>
-<p>####这里我们将MRC和ARC分开讨论：</p>
+<p>这里我们将MRC和ARC分开讨论：</p>
+<a id="more"></a>
 <hr>
-<p>######1、在MRC下有三种类型的block</p>
-<ul>
-<li><p><strong><code>NSGlobalBlock:</code></strong>  位于内存全局区、不调用外部变量或者仅调用静态区常量区的”变量”</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">CGFloat gFloat = 1.2;</div><div class="line">NSString *gStr = @&quot;全局字符串&quot;;</div><div class="line">@implementation test  </div><div class="line">-(void)globalTest &#123; </div><div class="line">    //注:在本例中NSSting分别在内存中的哪个区域呢？</div><div class="line">    //1、不调用外部变量的block</div><div class="line">    void(^gblock1)(NSString *) = ^(NSString *str)&#123; </div><div class="line">         NSLog(@&quot;%@&quot;,str);</div><div class="line">     &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock1);</div><div class="line">    gblock1(@&quot;传入字符串常量&quot;);</div><div class="line">    //2、仅调用全局变量的block</div><div class="line">    void(^gblock2)(void) = ^&#123; </div><div class="line">      NSLog(@&quot;%lf&quot;,gFloat);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock2);</div><div class="line">    gblock2();</div><div class="line">    void(^gblock3)(void) = ^&#123; </div><div class="line">      NSLog(@&quot;%@&quot;,gStr);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock3);</div><div class="line">    gblock3();</div><div class="line">   //3、仅调用静态变量的block</div><div class="line">    static CGFloat sFloat = 2.1;</div><div class="line">    void(^gblock4)(void) = ^&#123;</div><div class="line">      NSLog(@&quot;%lf&quot;,sFloat);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock4);</div><div class="line">    gblock4();</div><div class="line">    static NSString *staStr = @&quot;静态字符串&quot;;</div><div class="line">    void(^gblock5)(void) = ^&#123;</div><div class="line">      NSLog(@&quot;%@&quot;,staStr);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock5);</div><div class="line">    gblock5();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>控制台输出:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 14:50:22.928972 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001050&gt;</div><div class="line">2016-12-06 14:50:22.929176 test_demo[18845:866060] 传入字符串常量</div><div class="line">2016-12-06 14:50:22.929221 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001090&gt;</div><div class="line">2016-12-06 14:50:22.929246 test_demo[18845:866060] 1.200000</div><div class="line">2016-12-06 14:50:22.929268 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x1000010d0&gt;</div><div class="line">2016-12-06 14:50:22.929288 test_demo[18845:866060] 全局字符串</div><div class="line">2016-12-06 14:50:22.929307 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001110&gt;</div><div class="line">2016-12-06 14:50:22.929320 test_demo[18845:866060] 2.100000</div><div class="line">2016-12-06 14:50:22.929338 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001150&gt;</div><div class="line">2016-12-06 14:50:22.929354 test_demo[18845:866060] 静态字符串</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><br></p>
-<ul>
-<li><p><strong><code>NSStackBlock:</code></strong> 位于内存栈区、仅调用栈区变量</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">-(void)stackTest &#123;</div><div class="line">    //局部变量</div><div class="line">    CGFloat sFloat = 1.1;</div><div class="line">    void(^sBlock1)(void) = ^&#123;</div><div class="line">      NSLog(@&quot;%lf&quot;,sFloat);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,sBlock1);</div><div class="line">    sBlock1();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>控制台输出:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 15:04:04.606908 test_demo[18880:873406] &lt;__NSStackBlock__: 0x7fff5fbff6d8&gt;</div><div class="line">2016-12-06 15:04:04.607076 test_demo[18880:873406] 1.100000</div></pre></td></tr></table></figure>
-</li>
-<li><p><strong><code>NSMallocBlock:</code></strong> 位于内存堆区、由栈区copy到堆区</p>
-<pre> -(void)mallocTest {
-//局部变量
-CGFloat sFloat = 1.1;<br>
-void(^sBlock1)(void) = ^{<br>        NSLog(@"%lf",sFloat);
-};
-//    NSLog(@"%@",sBlock1);
-//    sBlock1();<br>
-void(^mBlock1)(void) = [sBlock1 copy];
-NSLog(@"%@",mBlock1);<br>
-//@property(copy,nonatomic)void(^mBlock2)(void);
-self.mBlock2 = sBlock1;
-NSLog(@"%@",self.mBlock2);
-}</pre></li>
-<li><code>控制台输出:</code><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 15:37:07.306385 test_demo[28582:914325] &lt;__NSMallocBlock__: 0x100402f00&gt;</div><div class="line">2016-12-06 15:37:07.306699 test_demo[28582:914325] &lt;__NSMallocBlock__: 0x100600000&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
+<h3 id="在MRC下有三种类型的block"><a href="#在MRC下有三种类型的block" class="headerlink" title="在MRC下有三种类型的block"></a>在MRC下有三种类型的block</h3><p><strong><code>NSGlobalBlock:</code></strong>  位于内存全局区、不调用外部变量或者仅调用静态区常量区的”变量”<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">CGFloat gFloat = 1.2;</div><div class="line">NSString *gStr = @&quot;全局字符串&quot;;</div><div class="line">@implementation test  </div><div class="line">-(void)globalTest &#123; </div><div class="line">    //注:在本例中NSSting分别在内存中的哪个区域呢？</div><div class="line">    //1、不调用外部变量的block</div><div class="line">    void(^gblock1)(NSString *) = ^(NSString *str)&#123; </div><div class="line">         NSLog(@&quot;%@&quot;,str);</div><div class="line">     &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock1);</div><div class="line">    gblock1(@&quot;传入字符串常量&quot;);</div><div class="line">    //2、仅调用全局变量的block</div><div class="line">    void(^gblock2)(void) = ^&#123; </div><div class="line">      NSLog(@&quot;%lf&quot;,gFloat);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock2);</div><div class="line">    gblock2();</div><div class="line">    void(^gblock3)(void) = ^&#123; </div><div class="line">      NSLog(@&quot;%@&quot;,gStr);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock3);</div><div class="line">    gblock3();</div><div class="line">   //3、仅调用静态变量的block</div><div class="line">    static CGFloat sFloat = 2.1;</div><div class="line">    void(^gblock4)(void) = ^&#123;</div><div class="line">      NSLog(@&quot;%lf&quot;,sFloat);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock4);</div><div class="line">    gblock4();</div><div class="line">    static NSString *staStr = @&quot;静态字符串&quot;;</div><div class="line">    void(^gblock5)(void) = ^&#123;</div><div class="line">      NSLog(@&quot;%@&quot;,staStr);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock5);</div><div class="line">    gblock5();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>控制台输出:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 14:50:22.928972 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001050&gt;</div><div class="line">2016-12-06 14:50:22.929176 test_demo[18845:866060] 传入字符串常量</div><div class="line">2016-12-06 14:50:22.929221 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001090&gt;</div><div class="line">2016-12-06 14:50:22.929246 test_demo[18845:866060] 1.200000</div><div class="line">2016-12-06 14:50:22.929268 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x1000010d0&gt;</div><div class="line">2016-12-06 14:50:22.929288 test_demo[18845:866060] 全局字符串</div><div class="line">2016-12-06 14:50:22.929307 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001110&gt;</div><div class="line">2016-12-06 14:50:22.929320 test_demo[18845:866060] 2.100000</div><div class="line">2016-12-06 14:50:22.929338 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001150&gt;</div><div class="line">2016-12-06 14:50:22.929354 test_demo[18845:866060] 静态字符串</div></pre></td></tr></table></figure></p>
+<p><strong><code>NSStackBlock:</code></strong> 位于内存栈区、仅调用栈区变量<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">-(void)stackTest &#123;</div><div class="line">    //局部变量</div><div class="line">    CGFloat sFloat = 1.1;</div><div class="line">    void(^sBlock1)(void) = ^&#123;</div><div class="line">      NSLog(@&quot;%lf&quot;,sFloat);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,sBlock1);</div><div class="line">    sBlock1();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>控制台输出:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 15:04:04.606908 test_demo[18880:873406] &lt;__NSStackBlock__: 0x7fff5fbff6d8&gt;</div><div class="line">2016-12-06 15:04:04.607076 test_demo[18880:873406] 1.100000</div></pre></td></tr></table></figure></p>
+<p><strong><code>NSMallocBlock:</code></strong> 位于内存堆区、由栈区copy到堆区<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> -(void)mallocTest &#123;</div><div class="line">    //局部变量</div><div class="line">    CGFloat sFloat = 1.1;&lt;/br&gt;</div><div class="line">    void(^sBlock1)(void) = ^&#123;&lt;/br&gt;        NSLog(@&quot;%lf&quot;,sFloat);</div><div class="line">    &#125;;</div><div class="line"> //    NSLog(@&quot;%@&quot;,sBlock1);</div><div class="line">//    sBlock1();&lt;/br&gt;</div><div class="line">    void(^mBlock1)(void) = [sBlock1 copy];</div><div class="line">    NSLog(@&quot;%@&quot;,mBlock1);&lt;/br&gt;</div><div class="line">    //@property(copy,nonatomic)void(^mBlock2)(void);</div><div class="line">    self.mBlock2 = sBlock1;</div><div class="line">    NSLog(@&quot;%@&quot;,self.mBlock2);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>控制台输出:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 15:37:07.306385 test_demo[28582:914325] &lt;__NSMallocBlock__: 0x100402f00&gt;</div><div class="line">2016-12-06 15:37:07.306699 test_demo[28582:914325] &lt;__NSMallocBlock__: 0x100600000&gt;</div></pre></td></tr></table></figure></p>
 <hr>
-<p>######2、在ARC下，仅存在 <code>NSGlobalBlock</code> 、<code>NSMallocBlock</code> 两种block<br><br>我们切换到arc环境，并且将 <code>mallocTest</code> 中的如下代码注释取消<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//    NSLog(@&quot;%@&quot;,sBlock1);</div><div class="line">//    sBlock1();</div></pre></td></tr></table></figure></p>
+<h3 id="在ARC下，仅存在-NSGlobalBlock-、NSMallocBlock-两种block"><a href="#在ARC下，仅存在-NSGlobalBlock-、NSMallocBlock-两种block" class="headerlink" title="在ARC下，仅存在 NSGlobalBlock 、NSMallocBlock 两种block"></a>在ARC下，仅存在 <code>NSGlobalBlock</code> 、<code>NSMallocBlock</code> 两种block</h3><p>我们切换到arc环境，并且将 <code>mallocTest</code> 中的如下代码注释取消<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//    NSLog(@&quot;%@&quot;,sBlock1);</div><div class="line">//    sBlock1();</div></pre></td></tr></table></figure></p>
 <p>运行得到输出结果：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 15:52:42.884091 test_demo[35541:942156] &lt;__NSMallocBlock__: 0x100502eb0&gt;</div><div class="line">2016-12-06 15:52:42.884379 test_demo[35541:942156] 1.100000</div><div class="line">2016-12-06 15:52:42.884416 test_demo[35541:942156] &lt;__NSMallocBlock__: 0x100502eb0&gt;</div><div class="line">2016-12-06 15:52:42.884446 test_demo[35541:942156] &lt;__NSMallocBlock__: 0x100502eb0&gt;</div></pre></td></tr></table></figure></p>
 <p>由此可以判断，在arc下没有 <code>NSStackBlock</code> 类型变量、并且 <code>copy</code> 操作只是对堆区 <code>block</code> 进行了一次引用，既然如此我接着对  <code>NSGlobalBlock</code> 、<code>NSMallocBlock</code> 进行copy操作：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">static NSString *staStr = @&quot;静态字符串&quot;;</div><div class="line">void(^gblock5)(void) = ^&#123;</div><div class="line">    NSLog(@&quot;%@&quot;,staStr);</div><div class="line">&#125;;</div><div class="line">NSLog(@&quot;%@&quot;,gblock5);</div><div class="line">gblock5();</div><div class="line">void(^copyBlock)(void) = [gblock5 copy];</div><div class="line">NSLog(@&quot;%@&quot;,copyBlock);</div></pre></td></tr></table></figure></p>
-<ul>
-<li><code>控制台输出:</code><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 16:24:36.832399 test_demo[35671:957646] &lt;__NSGlobalBlock__: 0x100002170&gt;</div><div class="line">2016-12-06 16:24:36.832415 test_demo[35671:957646] 静态字符串</div><div class="line">2016-12-06 16:24:36.832438 test_demo[35671:957646] &lt;__NSGlobalBlock__: 0x100002170&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
+<p>控制台输出:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 16:24:36.832399 test_demo[35671:957646] &lt;__NSGlobalBlock__: 0x100002170&gt;</div><div class="line">2016-12-06 16:24:36.832415 test_demo[35671:957646] 静态字符串</div><div class="line">2016-12-06 16:24:36.832438 test_demo[35671:957646] &lt;__NSGlobalBlock__: 0x100002170&gt;</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">void(^mBlock1)(void) = [sBlock1 copy];</div><div class="line">NSLog(@&quot;%@&quot;,mBlock1);</div><div class="line">void(^copyBlock)(void) = [mBlock1 copy];</div><div class="line">NSLog(@&quot;%@&quot;,copyBlock);</div></pre></td></tr></table></figure>
-<ul>
-<li><code>控制台输出:</code><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 16:27:10.688490 test_demo[35702:959578] &lt;__NSMallocBlock__: 0x1006000c0&gt;</div><div class="line">2016-12-06 16:27:10.688571 test_demo[35702:959578] &lt;__NSMallocBlock__: 0x1006000c0&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
+<p>控制台输出:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 16:27:10.688490 test_demo[35702:959578] &lt;__NSMallocBlock__: 0x1006000c0&gt;</div><div class="line">2016-12-06 16:27:10.688571 test_demo[35702:959578] &lt;__NSMallocBlock__: 0x1006000c0&gt;</div></pre></td></tr></table></figure></p>
 <hr>
-<h5 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h5><ol>
+<p><strong>总结：</strong></p>
+<ol>
 <li>当block中没有引用任何外部变量时或者仅仅调用静态区变量时，编译器直接将block放在静态区(减少堆区的占用有利于性能的)</li>
 <li>copy 操作对将NSStackBlock拷贝到堆区、对另外两种类型只是强引用</li>
 <li>arc下是没有NSStackBlock类型block的(block被当做对象处理)</li>
@@ -312,7 +276,7 @@ NSLog(@"%@",self.mBlock2);
         <p><span>本文标题:</span><a href="/2016/12/06/Objective-C中Block的类型/">Objective-C中Block的类型</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 hanl001 的个人博客">hanl001</a></p>
         <p><span>发布时间:</span>2016年12月06日 - 16时11分</p>
-        <p><span>最后更新:</span>2017年06月03日 - 11时10分</p>
+        <p><span>最后更新:</span>2017年06月06日 - 12时18分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/12/06/Objective-C中Block的类型/" title="Objective-C中Block的类型">https://hanl001.github.io/2016/12/06/Objective-C中Block的类型/</a>
             <span class="copy-path" data-clipboard-text="原文: https://hanl001.github.io/2016/12/06/Objective-C中Block的类型/　　作者: hanl001" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -345,7 +309,7 @@ NSLog(@"%@",self.mBlock2);
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#总结："><span class="toc-number">1.</span> <span class="toc-text">总结：</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在MRC下有三种类型的block"><span class="toc-number">1.</span> <span class="toc-text">在MRC下有三种类型的block</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在ARC下，仅存在-NSGlobalBlock-、NSMallocBlock-两种block"><span class="toc-number">2.</span> <span class="toc-text">在ARC下，仅存在 NSGlobalBlock 、NSMallocBlock 两种block</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -396,11 +360,11 @@ NSLog(@"%@",self.mBlock2);
 <script>
     var gitment = new Gitment({
       id: window.location.pathname,
-      owner: 'luuman',
-      repo: 'luuman.github.io',
+      owner: 'hanl001',
+      repo: 'hanl001.gihub.io',
       oauth: {
-        client_id: 'null',
-        client_secret: 'null',
+        client_id: 'df999ed9c94ae95aae79',
+        client_secret: 'ff2b434e76a962ee2b3a4b6c0797f3dadcc309a0',
       },
     })
     gitment.render('gitments')
