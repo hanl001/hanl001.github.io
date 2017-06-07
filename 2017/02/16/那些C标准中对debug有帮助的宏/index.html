@@ -92,16 +92,16 @@
 
 
 
-<meta name="description" content="我在 Objective-C中Block的类型 一文中说到MRC下有NSGlobalBlock、NSMallocBlock以及NSStackBlock三种类型的block，而ARC下是没有NSStackBlock类型的，在这里对其进行一个更正补充。">
+<meta name="description" content="最近在重构消息模块，研究云信官方demo的时候发现他们用 CocoaLumberjack 这个三方框架来监控日志输出，我之前也有在自己的项目中引入 NSSLogger 来达到类似的目的。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ARC下NSStackBlock去哪了">
-<meta property="og:url" content="https://hanl001.github.io/2017/03/24/ARC下NSStackBlock去哪了/index.html">
+<meta property="og:title" content="那些C标准中对debug有帮助的宏">
+<meta property="og:url" content="https://hanl001.github.io/2017/02/16/那些C标准中对debug有帮助的宏/index.html">
 <meta property="og:site_name" content="冬天的冰激凌">
-<meta property="og:description" content="我在 Objective-C中Block的类型 一文中说到MRC下有NSGlobalBlock、NSMallocBlock以及NSStackBlock三种类型的block，而ARC下是没有NSStackBlock类型的，在这里对其进行一个更正补充。">
-<meta property="og:updated_time" content="2017-06-06T09:54:54.000Z">
+<meta property="og:description" content="最近在重构消息模块，研究云信官方demo的时候发现他们用 CocoaLumberjack 这个三方框架来监控日志输出，我之前也有在自己的项目中引入 NSSLogger 来达到类似的目的。">
+<meta property="og:updated_time" content="2017-06-07T09:19:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ARC下NSStackBlock去哪了">
-<meta name="twitter:description" content="我在 Objective-C中Block的类型 一文中说到MRC下有NSGlobalBlock、NSMallocBlock以及NSStackBlock三种类型的block，而ARC下是没有NSStackBlock类型的，在这里对其进行一个更正补充。">
+<meta name="twitter:title" content="那些C标准中对debug有帮助的宏">
+<meta name="twitter:description" content="最近在重构消息模块，研究云信官方demo的时候发现他们用 CocoaLumberjack 这个三方框架来监控日志输出，我之前也有在自己的项目中引入 NSSLogger 来达到类似的目的。">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://hanl001.github.io/2017/03/24/ARC下NSStackBlock去哪了/"/>
+  <link rel="canonical" href="https://hanl001.github.io/2017/02/16/那些C标准中对debug有帮助的宏/"/>
 
 
 
 
 
-  <title>ARC下NSStackBlock去哪了 | 冬天的冰激凌</title>
+  <title>那些C标准中对debug有帮助的宏 | 冬天的冰激凌</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -255,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://hanl001.github.io/2017/03/24/ARC下NSStackBlock去哪了/">
+    <link itemprop="mainEntityOfPage" href="https://hanl001.github.io/2017/02/16/那些C标准中对debug有帮助的宏/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hanl001">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ARC下NSStackBlock去哪了</h1>
+          <h1 class="post-title" itemprop="name headline">那些C标准中对debug有帮助的宏</h1>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-24T23:41:39+08:00">
-                2017-03-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-16T17:42:52+08:00">
+                2017-02-16
               </time>
             
 
@@ -319,18 +319,37 @@
       
 
       
-        <p>我在 <a href="http://www.jianshu.com/p/bfc0b2577d3b" target="_blank" rel="external">Objective-C中Block的类型</a> 一文中说到MRC下有NSGlobalBlock、NSMallocBlock以及NSStackBlock三种类型的block，而ARC下是没有NSStackBlock类型的，在这里对其进行一个更正补充。</p>
+        <p>最近在重构消息模块，研究云信官方demo的时候发现他们用 <code>CocoaLumberjack</code> 这个三方框架来监控日志输出，我之前也有在自己的项目中引入 <code>NSSLogger</code> 来达到类似的目的。</p>
 <a id="more"></a>
+<p>ps: 我们项目中一直存在一坨宏，也不知道谁加上去的2333<br>   <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#ifdef DEBUG</div><div class="line">#define DLog( s, ... ) NSLog( @&quot;&lt;%p %@:(%d)&gt; %@&quot;, self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )</div><div class="line">#define ALog(fmt, ...) NSLog((@&quot;%s [Line %d] &quot; fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);</div><div class="line">#else</div><div class="line">#define DLog( s, ... )</div><div class="line">#define ALog(...)</div><div class="line">#endif</div></pre></td></tr></table></figure></p>
 <hr>
-<p>在RAC下，进行如下测试：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">CGFloat f = 1.1;</div><div class="line"></div><div class="line">NSLog(@&quot;%@&quot;, ^&#123;NSLog(@&quot;%lf&quot;,f);&#125;);</div><div class="line"></div><div class="line">NSLog(@&quot;%@&quot;,[^&#123;NSLog(@&quot;%lf&quot;,f);&#125; copy]);</div><div class="line"></div><div class="line">void(^deliveryBlock)(void) = ^&#123;NSLog(@&quot;%lf&quot;,f);&#125;;</div><div class="line">NSLog(@&quot;%@&quot;, deliveryBlock);</div></pre></td></tr></table></figure></p>
-<p>输出日志为<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2017-03-24 22:20:22.526 testdemo[48961:588668] &lt;__NSStackBlock__: 0x7fff525a8c20&gt;</div><div class="line">2017-03-24 22:20:22.526 testdemo[48961:588668] &lt;__NSMallocBlock__: 0x60000005e420&gt;</div><div class="line">2017-03-24 22:20:22.527 testdemo[48961:588668] &lt;__NSMallocBlock__: 0x60000005e420&gt;</div></pre></td></tr></table></figure></p>
-<p>我发现，在直接打印block的时候，他的类型显示的还是NSStackBlock。而我们将这个block进行赋值之后，打印deliveryBlock的结果是NSMallocBlock类型。<br>也就是说，NSStackBlock类型在ARC下是存在，只是在对他进行赋值的时候，编译器将栈区的block拷贝到了堆区（赋值和copy在这里效果相同）。</p>
+<p><strong>今天特地整理一下这些debug的时候常用的宏</strong></p>
+<ul>
+<li>打印函数的宏<br><code>__func__</code>、<code>__FUNCTION__</code>、<code>__PRETTY_FUNCTION__</code><br>测试代码段如下：<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">NSLog(@&quot;__func__:%s,&quot;,__func__);</div><div class="line">NSLog(@&quot;__FUNCTION__:%s,&quot;,__FUNCTION__);</div><div class="line">  NSLog(@&quot;__PRETTY_FUNCTION__:%s,&quot;,__PRETTY_FUNCTION__);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在oc的方法中他们的表现是一样的，输出如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2017-02-16 15:30:31.474 testdemo[74077:387792] __func__:-[testViewController test],</div><div class="line">2017-02-16 15:30:31.474 testdemo[74077:387792] __FUNCTION__:-[testViewController test],</div><div class="line">2017-02-16 15:30:31.475 testdemo[74077:387792] __PRETTY_FUNCTION__:-[testViewController test],</div></pre></td></tr></table></figure></p>
+<p>在main函数中(也就是函数作为程序的一级成员时)，输出如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2017-02-16 16:34:36.234 testdemo[82693:425275] __func__:main,</div><div class="line">2017-02-16 16:34:36.234 testdemo[82693:425275] __FUNCTION__:main,</div><div class="line">2017-02-16 16:34:36.235 testdemo[82693:425275] __PRETTY_FUNCTION__:int main(int, char **),</div></pre></td></tr></table></figure></p>
+<p>其中 <code>__PRETTY_FUNCTION__</code> 会输出 <strong>当前所在函数名，包括返回类型和参数类型，而在有一些IDE环境中是不支持 <code>__func__</code> 的。</strong></p>
+<ul>
+<li>打印时间的宏<br><code>__TIME__</code>、 <code>__DATE__</code><br>测试代码段如下：<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">NSLog(@&quot;__TIME__:%s,&quot;,__TIME__);</div><div class="line">NSLog(@&quot;__DATE__:%s,&quot;,__DATE__);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong><code>__TIME__</code> 会输出当前源文件编译的日期，<code>__DATE__</code> 会输出进行预处理的日期</strong>，输出如下:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2017-02-16 16:43:03.170 testdemo[82693:425275] __TIME__:15:30:13,</div><div class="line">2017-02-16 16:43:03.171 testdemo[82693:425275] __DATE__:Feb 16 2017,</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>打印代码信息相关的宏<br> <code>__LINE__</code>、<code>__FILE__</code><br><strong>其中 <code>__LINE__</code> 会输出源文件中当前代码所在行号，<code>__FILE__</code> 会输出当前源文件本地所在的绝对路径</strong><br>测试结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//测试代码片段</div><div class="line">51 NSLog(@&quot;__LINE__:%d,&quot;,__LINE__);</div><div class="line">52 NSLog(@&quot;__FILE__:%s,&quot;,__FILE__);</div><div class="line">//控制台输出</div><div class="line">2017-02-16 16:43:03.170 testdemo[82693:425275] __LINE__:51,</div><div class="line">2017-02-16 16:43:03.170 testdemo[82693:425275] __FILE__:/Users/hanling/Desktop/testdemo/testdemo/testViewController.m,</div></pre></td></tr></table></figure>
+</li>
+<li><p>输出可变参数的宏<br><code>__VA_ARGS__</code>(C99提供的可变宏)，在上文DLog中也有用到过。<br><strong>它是可变参数宏，对他进行宏定义可以传入不定个数的参数，在他前面加上 <code>##</code> 则表示可变参数被忽略或为空时会直接将其带来的负面效果移除，就像 <code>__VA_ARGS__</code> 完全没有存在一样。</strong><br>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#define DLog( s, ... ) NSLog( @&quot;&lt;%p %@:(%d)&gt; %@&quot;, self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这个宏在 <code>DLog( s, ... )</code> 中传入的可变参数个数为0时，<code>##__VA_ARGS__</code> 前的逗号不会被输出</p>
+<p>  <strong>第二种可变参数的宏定义方法(GCC提供的可变宏)</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#define cprint(format,args...) NSLog(format, ##args)</div></pre></td></tr></table></figure></p>
+<p>在 <code>Xcode</code> 中这两种方式都是支持的</p>
 <hr>
-<p>至于原因<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    </div><div class="line">    NSObject *obj = [[NSObject alloc]init];</div><div class="line">    void(^deliveryBlock)(void) = ^&#123;</div><div class="line">        NSLog(@&quot;%@&quot;,obj);</div><div class="line">    &#125;;</div><div class="line">    [self didBlock:deliveryBlock];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (void)didBlock:(void(^)(void)) block &#123;</div><div class="line">    NSLog(@&quot;%@&quot;,block);</div><div class="line">    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;</div><div class="line">        block();</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>参照上方代码，假如deliveryBlock是NSStackBlock类型，如果我们把deliveryBlock当作方法参数传递到了另外一个方法，那么一旦deliveryBlock不在原来方法的调用栈，而新方法调用deliveryBlock的时机又不得而知，可能在新方法调用的时候deliveryBlock的时候堆区的obj已经被释放。<strong>即：ARC下编译器在NSStackBlock类型的block传递过程中进行了自动优化。</strong></p>
-<hr>
-<p><strong>为了进一步验证，我做了如下测试</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    [self test:^&#123;</div><div class="line">       NSLog(@&quot;%@&quot;,self.object);</div><div class="line">    &#125;];</div><div class="line">&#125;</div><div class="line">- (void)test:(void(^)(void))block &#123;</div><div class="line">    NSLog(@&quot;%@&quot;,block); //log: &lt;__NSStackBlock__: 0x7fff5ef49b88&gt;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>当object作为self的属性时，object在整个vc的生命周期存在，故不会有脱离调用栈的问题，所以编译器没有将其自动拷贝到堆。</p>
+<p><strong>另外：在OC中我们还可以这么玩(来自喵神的博客)</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//输出当前方法</div><div class="line">NSLog(@&quot;Current selector: %@&quot;,NSStringFromSelector(_cmd));</div><div class="line">//输出当前类</div><div class="line">NSLog(@&quot;Object class: %@&quot;,NSStringFromClass(self.class));</div><div class="line">//输出当前源文件名</div><div class="line">NSLog(@&quot;Filename: %@&quot;,[[NSString stringWithUTF8String:__FILE__] lastPathComponent]);</div></pre></td></tr></table></figure></p>
+<p>如果有需要你还可以利用OC的反射机制打印更多东西</p>
 
       
     </div>
@@ -367,8 +386,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/08/由Swift柯里化说开到block的循环引用/" rel="next" title="由Swift柯里化说开到block的循环引用">
-                <i class="fa fa-chevron-left"></i> 由Swift柯里化说开到block的循环引用
+              <a href="/2016/12/21/git之用命令新建本地以及远程仓库/" rel="next" title="git之用命令新建本地以及远程仓库">
+                <i class="fa fa-chevron-left"></i> git之用命令新建本地以及远程仓库
               </a>
             
           </div>
@@ -377,8 +396,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/18/你真的懂-weak-strong-dance-吗？/" rel="prev" title="你真的懂 weak strong dance 吗？">
-                你真的懂 weak strong dance 吗？ <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/08/由Swift柯里化说开到block的循环引用/" rel="prev" title="由Swift柯里化说开到block的循环引用">
+                由Swift柯里化说开到block的循环引用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
