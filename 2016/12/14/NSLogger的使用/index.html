@@ -1,12 +1,98 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="baidu-site-verification" content="8xp2415Z0O" />
+<!doctype html>
+
+
+
   
-  <title>NSLogger的使用 | 冬天的冰激凌</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用途用来监控app的日志,从此摆脱xcode的控制台,mac版界面如下:">
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta name="baidu-site-verification" content="8xp2415Z0O" />
+<meta name="google-site-verification" content="-9Zz6AGAKiNHSYA8WQRPg1mTCU4AokcxRfHMrXFNlW0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Tools," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="用途用来监控app的日志,从此摆脱xcode的控制台,mac版界面如下:">
 <meta name="keywords" content="Tools">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NSLogger的使用">
@@ -19,211 +105,223 @@
 <meta name="twitter:title" content="NSLogger的使用">
 <meta name="twitter:description" content="用途用来监控app的日志,从此摆脱xcode的控制台,mac版界面如下:">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3748868-18b014ca65bc18f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-  
-    <link rel="alternative" href="/atom.xml" title="冬天的冰激凌" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/img/favicon.png">
-  
-  
-      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
-  
-      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  
-  <!-- 加载特效 -->
-    <script src="/js/pace.js"></script>
-    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
-  <script>
-      var yiliaConfig = {
-          rootUrl: '/',
-          fancybox: true,
-          animate: true,
-          isHome: false,
-          isPost: true,
-          isArchive: false,
-          isTag: false,
-          isCategory: false,
-          open_in_new: false
-      }
-  </script>
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hanl001.github.io/2016/12/14/NSLogger的使用/"/>
+
+
+
+
+
+  <title>NSLogger的使用 | 冬天的冰激凌</title>
 </head>
 
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            
-            <img lazy-src="/img/head.jpg" class="js-avatar">
-            
-        </a>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-        <hgroup>
-          <h1 class="header-author"><a href="/" title="Hi Mate">hanl001</a></h1>
-        </hgroup>
+  
 
-        
-        
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
 
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fl github" target="_blank" href="https://github.com/hanl001" title="github">github</a>
-                            
-                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/hanl001" title="zhihu">zhihu</a>
-                            
-                                <a class="fl google" target="_blank" href="https://www.google.com" title="google">google</a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Block/" style="font-size: 10px;">Block</a> <a href="/tags/Tools/" style="font-size: 20px;">Tools</a>
-                    </div>
-                </section>
-                
-                
-                
 
-                
-                
-                <section class="switch-part switch-part3">
-                
-                    <div id="js-aboutme">喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">冬天的冰激凌</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">hanl001</a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                
-                    <img lazy-src="/img/head.jpg" class="js-avatar">
-                
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="Me">hanl001</a></h1>
-            </hgroup>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
             
-            <nav class="header-menu">
-                <ul>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                <div class="social">
-                    
-                        <a class="github" target="_blank" href="https://github.com/hanl001" title="github">github</a>
-                    
-                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/hanl001" title="zhihu">zhihu</a>
-                    
-                        <a class="google" target="_blank" href="https://www.google.com" title="google">google</a>
-                    
-                </div>
-            </nav>
-        </header>                
-    </div>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
 </nav>
-      <div class="body-wrap"><article id="post-NSLogger的使用" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/14/NSLogger的使用/" class="article-date">
-      <time datetime="2016-12-14T03:23:22.000Z" itemprop="datePublished">2016-12-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      NSLogger的使用
-    </h1>
+
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
+  
+  
+  
 
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
-    </div>
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://hanl001.github.io/2016/12/14/NSLogger的使用/">
 
-        <div class="clearfix"></div>
-      </div>
-      
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hanl001">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冬天的冰激凌">
+    </span>
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">NSLogger的使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-14T11:23:22+08:00">
+                2016-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
         <hr>
 <h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h3><p>用来监控app的日志,从此摆脱xcode的控制台,mac版界面如下:<br><img src="http://upload-images.jianshu.io/upload_images/3748868-18b014ca65bc18f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mac版qq客户端的日志"></p>
 <a id="more"></a>
@@ -251,251 +349,353 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">-(void)sendRequest:(NSMutableDictionary *)mutableDic</div><div class="line">               url:(NSString *)url</div><div class="line">          progress:( void (^)(NSProgress *uploadProgress))uploadProgressBack</div><div class="line">         compelete:(void(^)(BOOL success, NSDictionary *responseObject))compelete &#123;</div><div class="line"></div><div class="line">    if (manager == nil) &#123;</div><div class="line">        manager = [AFHTTPSessionManager manager];</div><div class="line">    &#125;</div><div class="line">    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@&quot;text/html&quot;,@&quot;text/plain&quot;,@&quot;application/json&quot;,nil];</div><div class="line">    [manager.requestSerializer setValue:@&quot;ture&quot; forHTTPHeaderField:@&quot;ifmodified&quot;];</div><div class="line">     [manager.requestSerializer setValue:@&quot;ios&quot; forHTTPHeaderField:@&quot;app&quot;];</div><div class="line">    NSMutableDictionary *paramDic = nil;</div><div class="line">    if(mutableDic) &#123;</div><div class="line">        paramDic = [[NSMutableDictionary alloc] initWithDictionary:mutableDic];</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">        paramDic = [[NSMutableDictionary alloc] init];</div><div class="line">    &#125;</div><div class="line">    [paramDic setValue:[[JFUserInfo shareUserInfo] getToken] forKey:kUSERTOKE];</div><div class="line">    [paramDic setValue:[NSString appVersion] forKey:kCLIENTVERSION];</div><div class="line">  //使用NSLogger</div><div class="line">    LoggerService(2,@&quot;%@&quot;,url);</div><div class="line">    LoggerData(2,@&quot;paramDic = %@&quot;, paramDic);</div><div class="line"></div><div class="line">    [manager POST:url parameters:paramDic progress:^(NSProgress * _Nonnull uploadProgress) &#123;   </div><div class="line">        if (uploadProgressBack) &#123;</div><div class="line">            uploadProgressBack(uploadProgress);</div><div class="line">        &#125;</div><div class="line">    &#125; success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) &#123;</div><div class="line">        //使用NSLogger</div><div class="line">        LoggerData(3,@&quot;responseObject = %@&quot;, responseObject);</div><div class="line">        NSLog(@&quot;errmsg：%@&quot;,(NSDictionary *)responseObject[@&quot;errmsg&quot;]);</div><div class="line">        </div><div class="line">        NSDictionary *responseDic = (NSDictionary *)responseObject;</div><div class="line">        NSNumber *code =  responseDic[@&quot;errcode&quot;];</div><div class="line">        if ([code integerValue] == 2000001 || [code integerValue] == -4) &#123;//重新登录</div><div class="line">            NSLog(@&quot;错误请求：%@&quot;,responseDic[@&quot;errmsg&quot;]);</div><div class="line">            [[AppDelegate sharedAppDelegate] enterLoginUI];</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        if (compelete) &#123;</div><div class="line">            if ([code integerValue] == 0) &#123;</div><div class="line">                compelete(YES, responseDic);</div><div class="line">            &#125;else if ([code integerValue] &lt; 0)&#123;</div><div class="line">//                NSLog(@&quot;%@,%@错误请求：%@&quot;,mutableDic,url,responseDic[@&quot;errmsg&quot;]);</div><div class="line">                NSMutableDictionary * dic = [NSMutableDictionary dictionary];</div><div class="line">                [dic setValue:JFERRORMSG forKey:@&quot;errmsg&quot;];</div><div class="line">                [dic setValue:[NSNumber numberWithInt:-1] forKey:@&quot;errcode&quot;];</div><div class="line">                compelete(NO, dic);</div><div class="line">            &#125;else&#123;</div><div class="line">                compelete(NO, responseDic);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125; failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) &#123;</div><div class="line">//        if (compelete) &#123;</div><div class="line">            NSMutableDictionary * dic = [NSMutableDictionary dictionary];</div><div class="line">            [dic setValue:JFERRORMSG forKey:@&quot;errmsg&quot;];</div><div class="line">            [dic setValue:[NSNumber numberWithInt:-1] forKey:@&quot;errcode&quot;];</div><div class="line">            compelete(NO, dic);</div><div class="line">//        &#125;</div><div class="line">    &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
+    </div>
+
+    <div>
+      
+        
+
       
     </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tools/" rel="tag"># Tools</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/06/Objective-C中Block的类型/" rel="next" title="Objective-C中Block的类型">
+                <i class="fa fa-chevron-left"></i> Objective-C中Block的类型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/21/git之用命令新建本地以及远程仓库/" rel="prev" title="git之用命令新建本地以及远程仓库">
+                git之用命令新建本地以及远程仓库 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
     
   </div>
-  
-    
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/14/NSLogger的使用/">NSLogger的使用</a></p>
-        <p><span>文章作者:</span><a href="/" title="访问 hanl001 的个人博客">hanl001</a></p>
-        <p><span>发布时间:</span>2016年12月14日 - 11时23分</p>
-        <p><span>最后更新:</span>2017年06月06日 - 12时19分</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/14/NSLogger的使用/" title="NSLogger的使用">https://hanl001.github.io/2016/12/14/NSLogger的使用/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://hanl001.github.io/2016/12/14/NSLogger的使用/　　作者: hanl001" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script src="/js/clipboard.min.js"></script>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
 
 
-
-<nav id="article-nav">
-  
-    <a href="/2016/12/21/git之用命令新建本地以及远程仓库/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          git之用命令新建本地以及远程仓库
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/12/06/Objective-C中Block的类型/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Objective-C中Block的类型</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#用途"><span class="toc-number">1.</span> <span class="toc-text">用途</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用步骤"><span class="toc-number">2.</span> <span class="toc-text">使用步骤:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-NSLogger-Viewer-MAC端"><span class="toc-number">2.1.</span> <span class="toc-text">安装 NSLogger Viewer MAC端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在项目中加入NSLogger框架"><span class="toc-number">2.2.</span> <span class="toc-text">在项目中加入NSLogger框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在项目中使用"><span class="toc-number">2.3.</span> <span class="toc-text">在项目中使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#我的一些处理-供参考"><span class="toc-number">2.4.</span> <span class="toc-text">我的一些处理(供参考)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原理"><span class="toc-number">3.</span> <span class="toc-text">原理</span></a></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
-
-
-<div class="bdsharebuttonbox">
-	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
-	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
-</div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-
-
-
-    
-        <div id="gitments"></div>
-<script src="/js/gitment.browser.js"></script>
-<script>
-    var gitment = new Gitment({
-      id: window.location.pathname,
-      owner: 'hanl001',
-      repo: 'hanl001.gihub.io',
-      oauth: {
-        client_id: 'df999ed9c94ae95aae79',
-        client_secret: 'ff2b434e76a962ee2b3a4b6c0797f3dadcc309a0',
-      },
-    })
-    gitment.render('gitments')
-</script>
-    
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2016/12/21/git之用命令新建本地以及远程仓库/" title="上一篇: git之用命令新建本地以及远程仓库">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-        
-            <a href="/2016/12/06/Objective-C中Block的类型/" title="下一篇: Objective-C中Block的类型">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/18/你真的懂-weak-strong-dance-吗？/">你真的懂 weak strong dance 吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/24/ARC下NSStackBlock去哪了/">ARC下NSStackBlock去哪了</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/由Swift柯里化说开到block的循环引用/">由Swift柯里化说开到block的循环引用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/git之用命令新建本地以及远程仓库/">git之用命令新建本地以及远程仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/14/NSLogger的使用/">NSLogger的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/06/Objective-C中Block的类型/">Objective-C中Block的类型</a></li></ul>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-    <script>
-        $(".post-list").addClass("toc-article");
-        $(".post-list-item a").attr("target","_blank");
-        $("#post-nav-button > a:nth-child(2)").click(function() {
-            $(".fa-bars, .fa-times").toggle();
-            $(".post-list").toggle(300);
-            if ($(".toc").length > 0) {
-                $("#toc, #tocButton").toggle(200, function() {
-                    if ($(".switch-area").is(":visible")) {
-                        $("#tocButton").attr("value", valueHide);
-                        }
-                    })
-            }
-            else {
-            }
-        })
-    </script>
-
-
-
-    <script>
-        
-    </script>
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                &copy; 2017 hanl001
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
-            </div>
         </div>
         
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >总访问量: 
-                            <span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>, </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.jpg"
+               alt="hanl001" />
+          <p class="site-author-name" itemprop="name">hanl001</p>
+           
+              <p class="site-description motion-element" itemprop="description">衣袋渐宽终不悔，为伊消得人憔悴。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
             </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
         
-    </div>
-</footer>
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#用途"><span class="nav-number">1.</span> <span class="nav-text">用途</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用步骤"><span class="nav-number">2.</span> <span class="nav-text">使用步骤:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-NSLogger-Viewer-MAC端"><span class="nav-number">2.1.</span> <span class="nav-text">安装 NSLogger Viewer MAC端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在项目中加入NSLogger框架"><span class="nav-number">2.2.</span> <span class="nav-text">在项目中加入NSLogger框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在项目中使用"><span class="nav-number">2.3.</span> <span class="nav-text">在项目中使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我的一些处理-供参考"><span class="nav-number">2.4.</span> <span class="nav-text">我的一些处理(供参考)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">3.</span> <span class="nav-text">原理</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
 
     </div>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script src="/js/main.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var backgroundnum = 24;
-            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-        })
-    </script>
+  </aside>
 
 
+        
+      </div>
+    </main>
 
-
-
-<div class="scroll" id="scroll">
-    <a href="#"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hanl001</span>
 </div>
-<script>
-    $(document).ready(function() {
-        if ($("#comments").length < 1) {
-            $("#scroll > a:nth-child(2)").hide();
-        };
-    })
-</script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
 
-  <script language="javascript">
-    $(function() {
-        $("a[title]").each(function() {
-            var a = $(this);
-            var title = a.attr('title');
-            if (title == undefined || title == "") return;
-            a.data('title', title).removeAttr('title').hover(
 
-            function() {
-                var offset = a.offset();
-                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
-                    top: offset.top - a.outerHeight() - 15,
-                    left: offset.left + a.outerWidth()/2 + 1
-                }).fadeIn(function() {
-                    var pop = $(this);
-                    setTimeout(function() {
-                        pop.remove();
-                    }, pop.text().length * 800);
-                });
-            }, function() {
-                $("#anchortitlecontainer").remove();
-            });
-        });
-    });
-</script>
+        
 
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
 
   </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
 </body>
 </html>
