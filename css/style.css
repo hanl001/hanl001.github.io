@@ -2132,8 +2132,8 @@ a {
   border: 1px solid #000;
 }
 #header .header-nav .social a.简书 {
-  background: url("../img/简书.png") center no-repeat #fff;
-  border: 1px solid #fff;
+  background: url("../img/简书.png") center no-repeat #000;
+  border: 1px solid #000;
 }
 #header .header-nav .social a.facebook {
   background: url("../img/facebook.png") center no-repeat #3b5998;
