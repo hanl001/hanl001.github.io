@@ -8,12 +8,14 @@
 <html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta name="baidu-site-verification" content="8xp2415Z0O" />
-<meta name="google-site-verification" content="-9Zz6AGAKiNHSYA8WQRPg1mTCU4AokcxRfHMrXFNlW0" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
 
 
 
@@ -22,6 +24,8 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
+
+  <meta name="google-site-verification" content="KOszqM1OGfOjRaqiGzexFTsyPbz0H_0ZjMKzMUullYI" />
 
 
 
@@ -95,11 +99,11 @@
 <meta name="description" content="在阅读这篇文章之前，首先思考如下问题：  为什么 weak strong dance 能够避免循环引用？ 为什么不直接使用weak？ 使用 weak strong dance 的正确姿势？   本文从 weak strong dance 的 由来 用途 原理 扩展 逐步分析解答上述问题，但不仅仅只是解答问题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="你真的懂 weak strong dance 吗？">
-<meta property="og:url" content="https://hanl001.github.io/2017/05/18/你真的懂-weak-strong-dance-吗？/index.html">
+<meta property="og:url" content="http://blog.hanling.faith/2017/05/18/你真的懂-weak-strong-dance-吗？/index.html">
 <meta property="og:site_name" content="冬天的冰激凌">
 <meta property="og:description" content="在阅读这篇文章之前，首先思考如下问题：  为什么 weak strong dance 能够避免循环引用？ 为什么不直接使用weak？ 使用 weak strong dance 的正确姿势？   本文从 weak strong dance 的 由来 用途 原理 扩展 逐步分析解答上述问题，但不仅仅只是解答问题。">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3748868-a6ed1dbc55142177.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-06T10:01:22.000Z">
+<meta property="og:updated_time" content="2017-06-30T06:38:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你真的懂 weak strong dance 吗？">
 <meta name="twitter:description" content="在阅读这篇文章之前，首先思考如下问题：  为什么 weak strong dance 能够避免循环引用？ 为什么不直接使用weak？ 使用 weak strong dance 的正确姿势？   本文从 weak strong dance 的 由来 用途 原理 扩展 逐步分析解答上述问题，但不仅仅只是解答问题。">
@@ -112,7 +116,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"always","offset":0,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -131,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="https://hanl001.github.io/2017/05/18/你真的懂-weak-strong-dance-吗？/"/>
+  <link rel="canonical" href="http://blog.hanling.faith/2017/05/18/你真的懂-weak-strong-dance-吗？/"/>
 
 
 
@@ -163,7 +167,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -179,7 +183,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">hanl的code世界</p>
       
   </div>
 
@@ -209,6 +213,26 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -230,9 +254,43 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -257,7 +315,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://hanl001.github.io/2017/05/18/你真的懂-weak-strong-dance-吗？/">
+    <link itemprop="mainEntityOfPage" href="http://blog.hanling.faith/2017/05/18/你真的懂-weak-strong-dance-吗？/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hanl001">
@@ -300,11 +358,27 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/18/你真的懂-weak-strong-dance-吗？/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/05/18/你真的懂-weak-strong-dance-吗？/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
           
 
           
@@ -315,7 +389,7 @@
       </header>
     
 
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -345,27 +419,31 @@
 <li>如果在执行block时，self已经释放，即wself被置为nil。那么 <code>TestViewController *sself = wself;</code> 执行时sself得到的也是一个nil，因此 <code>[sself dismissModalViewControllerAnimated:YES];</code> 将不会被执行。</li>
 <li>如果所有时候都和3中一样只是“不执行”，那该有多好。但是结果往往不如人意。不信？ 测试代码如下：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">///WeakTestObject.h</div><div class="line">typedef void(^test_block)(void);</div><div class="line">@interface WeakTestObject : NSObject</div><div class="line">/**</div><div class="line"> *  &lt;#summary#&gt;</div><div class="line"> */</div><div class="line">@property (copy,nonatomic) test_block block;</div><div class="line">@end</div><div class="line"></div><div class="line">///ViewController.m</div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">    WeakTestObject *obj = [[WeakTestObject alloc]init];</div><div class="line">    obj.block = ^&#123;</div><div class="line">        NSLog(@&quot;execute block in obj&quot;);</div><div class="line">    &#125;;</div><div class="line">    __weak __typeof(obj) wObj = obj;</div><div class="line">    test_block VcBlock = ^&#123;</div><div class="line">        WeakTestObject *sObj = wObj;</div><div class="line">        sObj.block();</div><div class="line">    &#125;;</div><div class="line">    obj = nil;</div><div class="line">    VcBlock();    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">///WeakTestObject.h</div><div class="line">typedef void(^test_block)(void);</div><div class="line">@interface WeakTestObject : NSObject</div><div class="line">@property (copy,nonatomic) test_block block;</div><div class="line">@end</div><div class="line"></div><div class="line">///ViewController.m</div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">    WeakTestObject *obj = [[WeakTestObject alloc]init];</div><div class="line">    obj.block = ^&#123;</div><div class="line">        NSLog(@&quot;execute block in obj&quot;);</div><div class="line">    &#125;;</div><div class="line">    __weak __typeof(obj) wObj = obj;</div><div class="line">    test_block VcBlock = ^&#123;</div><div class="line">        WeakTestObject *sObj = wObj;</div><div class="line">        sObj.block();</div><div class="line">    &#125;;</div><div class="line">    obj = nil;</div><div class="line">    VcBlock();    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>当 <code>VcBlock</code> 在执行之前，obj已经释放，导致执行 <code>VcBlock</code> 过程中 <code>sObj</code> 以及 <code>sObj.block</code> 均为nil。程序进而crash在 <code>sObj.block();</code> 这里。 真实情况往往比这里的模拟代码复杂很多，可能会经过几次时间和空间的跨度；那么如何避免这种crash呢？</p>
 <p>两种处理：</p>
 <ul>
-<li>1 、对 <code>sObj.block</code> 进行判断<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">test_block block = ^&#123;</div><div class="line">        WeakTestObject *sObj = wObj;</div><div class="line">        if (sObj.block) &#123;</div><div class="line">            sObj.block();</div><div class="line">        &#125;</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
-</li>
+<li>1 、对 <code>sObj.block</code> 进行判断</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">test_block block = ^&#123;</div><div class="line">        WeakTestObject *sObj = wObj;</div><div class="line">        if (sObj.block) &#123;</div><div class="line">            sObj.block();</div><div class="line">        &#125;</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
 <ul>
-<li>2、 对 <code>sObj</code> 进行判断<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">test_block block = ^&#123;</div><div class="line">        WeakTestObject *sObj = wObj;</div><div class="line">        if (sObj) &#123;</div><div class="line">            sObj.block();</div><div class="line">        &#125;</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
-</li>
+<li>2、 对 <code>sObj</code> 进行判断</li>
 </ul>
-<p>显然第二种处理更优。首先饿哦们没有必要对sObj的每一个舒心进行判断，其实 在使用sObj 时 ，往往也不是仅仅执行它的一个block属性，而且会涉及到block嵌套或其他各种坑爹情况，其次根据接口封闭原则我们也不应该过多去关心类的实现。</p>
-<p>最终 weak strong dance 的正确姿势如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">__weak __typeof(obj) wObj = obj;</div><div class="line">    test_block block = ^&#123;</div><div class="line">        WeakTestObject *sObj = wObj;</div><div class="line">        if (sObj) &#123;</div><div class="line">            /// do ...</div><div class="line">        &#125;</div><div class="line">    &#125;;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">test_block block = ^&#123;</div><div class="line">        WeakTestObject *sObj = wObj;</div><div class="line">        if (sObj) &#123;</div><div class="line">            sObj.block();</div><div class="line">        &#125;</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
+<p>显然第二种处理更优。首先我们没有必要对sObj的每一个属性进行判断，其实 在使用sObj 时 ，往往也不是仅仅执行它的一个block属性，而且会涉及到block嵌套或其他各种坑爹情况，其次根据接口封闭原则我们也不应该过多去关心类的实现。</p>
+<p>最终 weak strong dance 的正确姿势如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">__weak __typeof(obj) wObj = obj;</div><div class="line">    test_block block = ^&#123;</div><div class="line">        WeakTestObject *sObj = wObj;</div><div class="line">        if (sObj) &#123;</div><div class="line">            /// do ...</div><div class="line">        &#125;</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
 <hr>
-<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p>######1. RAC中的宏<br>  因为RAC中大量使用block语言，为了方便开发者RAC中定义了一对宏 <code>@weakify() @strongify()</code> ，对于这对宏的具体分析可阅读哀殿的 <a href="http://www.jianshu.com/p/d8035216b257" target="_blank" rel="external">这篇文章</a> ，文中提到“Xcode 丢失了错误提示的能力”这一问题<br>另外YYKit中也定义了类似的宏，同时避免了上述问题,如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#ifndef weakify</div><div class="line">    #if DEBUG</div><div class="line">        #if __has_feature(objc_arc)</div><div class="line">        #define weakify(object) autoreleasepool&#123;&#125; __weak __typeof__(object) weak##_##object = object;</div><div class="line">        #else</div><div class="line">        #define weakify(object) autoreleasepool&#123;&#125; __block __typeof__(object) block##_##object = object;</div><div class="line">        #endif</div><div class="line">    #else</div><div class="line">        #if __has_feature(objc_arc)</div><div class="line">        #define weakify(object) try&#123;&#125; @finally&#123;&#125; &#123;&#125; __weak __typeof__(object) weak##_##object = object;</div><div class="line">        #else</div><div class="line">        #define weakify(object) try&#123;&#125; @finally&#123;&#125; &#123;&#125; __block __typeof__(object) block##_##object = object;</div><div class="line">        #endif</div><div class="line">    #endif</div><div class="line">#endif</div><div class="line"></div><div class="line">#ifndef strongify</div><div class="line">    #if DEBUG</div><div class="line">        #if __has_feature(objc_arc)</div><div class="line">        #define strongify(object) autoreleasepool&#123;&#125; __typeof__(object) object = weak##_##object;</div><div class="line">        #else</div><div class="line">        #define strongify(object) autoreleasepool&#123;&#125; __typeof__(object) object = block##_##object;</div><div class="line">        #endif</div><div class="line">    #else</div><div class="line">        #if __has_feature(objc_arc)</div><div class="line">        #define strongify(object) try&#123;&#125; @finally&#123;&#125; __typeof__(object) object = weak##_##object;</div><div class="line">        #else</div><div class="line">        #define strongify(object) try&#123;&#125; @finally&#123;&#125; __typeof__(object) object = block##_##object;</div><div class="line">        #endif</div><div class="line">    #endif</div><div class="line">#endif</div></pre></td></tr></table></figure></p>
-<p>这里补充另一个坑(请注意如下两种调用的区别)<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//1</div><div class="line">[self.viewModel.resignSubject subscribeNext:^(id x) &#123;</div><div class="line">        @strongify(self)</div><div class="line">        [self.keyBoard keyboardDown];</div><div class="line">    &#125;];</div><div class="line">//2</div><div class="line">[self.viewModel.resignSubject subscribeNext:^(id x) &#123;</div><div class="line">        @strongify(self)</div><div class="line">        [_keyBoard keyboardDown];</div><div class="line">    &#125;];</div></pre></td></tr></table></figure></p>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><h6 id="1-RAC中的宏"><a href="#1-RAC中的宏" class="headerlink" title="1. RAC中的宏"></a>1. RAC中的宏</h6><p>  因为RAC中大量使用block语言，为了方便开发者RAC中定义了一对宏 <code>@weakify() @strongify()</code> ，对于这对宏的具体分析可阅读哀殿的 <a href="http://www.jianshu.com/p/d8035216b257" target="_blank" rel="external">这篇文章</a> ，文中提到“Xcode 丢失了错误提示的能力”这一问题<br>另外YYKit中也定义了类似的宏，同时避免了上述问题,如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#ifndef weakify</div><div class="line">    #if DEBUG</div><div class="line">        #if __has_feature(objc_arc)</div><div class="line">        #define weakify(object) autoreleasepool&#123;&#125; __weak __typeof__(object) weak##_##object = object;</div><div class="line">        #else</div><div class="line">        #define weakify(object) autoreleasepool&#123;&#125; __block __typeof__(object) block##_##object = object;</div><div class="line">        #endif</div><div class="line">    #else</div><div class="line">        #if __has_feature(objc_arc)</div><div class="line">        #define weakify(object) try&#123;&#125; @finally&#123;&#125; &#123;&#125; __weak __typeof__(object) weak##_##object = object;</div><div class="line">        #else</div><div class="line">        #define weakify(object) try&#123;&#125; @finally&#123;&#125; &#123;&#125; __block __typeof__(object) block##_##object = object;</div><div class="line">        #endif</div><div class="line">    #endif</div><div class="line">#endif</div><div class="line"></div><div class="line">#ifndef strongify</div><div class="line">    #if DEBUG</div><div class="line">        #if __has_feature(objc_arc)</div><div class="line">        #define strongify(object) autoreleasepool&#123;&#125; __typeof__(object) object = weak##_##object;</div><div class="line">        #else</div><div class="line">        #define strongify(object) autoreleasepool&#123;&#125; __typeof__(object) object = block##_##object;</div><div class="line">        #endif</div><div class="line">    #else</div><div class="line">        #if __has_feature(objc_arc)</div><div class="line">        #define strongify(object) try&#123;&#125; @finally&#123;&#125; __typeof__(object) object = weak##_##object;</div><div class="line">        #else</div><div class="line">        #define strongify(object) try&#123;&#125; @finally&#123;&#125; __typeof__(object) object = block##_##object;</div><div class="line">        #endif</div><div class="line">    #endif</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<p>这里补充另一个坑(请注意如下两种调用的区别)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//1</div><div class="line">[self.viewModel.resignSubject subscribeNext:^(id x) &#123;</div><div class="line">        @strongify(self)</div><div class="line">        [self.keyBoard keyboardDown];</div><div class="line">    &#125;];</div><div class="line">//2</div><div class="line">[self.viewModel.resignSubject subscribeNext:^(id x) &#123;</div><div class="line">        @strongify(self)</div><div class="line">        [_keyBoard keyboardDown];</div><div class="line">    &#125;];</div></pre></td></tr></table></figure>
 <p>在 1 中 <code>self.keyBoard</code> 中的self其实是被重定义的局部的“self”, 而我们通过 <code>_keyBoard</code> 调用的话，表面上虽然看起来连self都没有调用，更不会有什么问题了。但，第二种写法其实是存在很大隐患的，系统在“寻找” <code>_keyBoard</code> 这个实例对象时，是通过对 self 指针进行地址偏移得到的，在这里编译器可不会对这个self进行宏替换。 </p>
-<p>在RAC源码中还有对另一个宏 <code>@unsafeify()</code> 的使用<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">RACCompoundDisposable *selfDisposable = self.disposable;</div><div class="line">	[selfDisposable addDisposable:otherDisposable];</div><div class="line"></div><div class="line">	@unsafeify(otherDisposable);</div><div class="line"></div><div class="line">	// If this subscription terminates, purge its disposable to avoid unbounded</div><div class="line">	// memory growth.</div><div class="line">	[otherDisposable addDisposable:[RACDisposable disposableWithBlock:^&#123;</div><div class="line">		@strongify(otherDisposable);</div><div class="line">		[selfDisposable removeDisposable:otherDisposable];</div><div class="line">	&#125;]];</div></pre></td></tr></table></figure></p>
+<p><strong>另外</strong>在RAC源码中还有对另一个宏 <code>@unsafeify()</code> 的使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">RACCompoundDisposable *selfDisposable = self.disposable;</div><div class="line">	[selfDisposable addDisposable:otherDisposable];</div><div class="line"></div><div class="line">	@unsafeify(otherDisposable);</div><div class="line"></div><div class="line">	// If this subscription terminates, purge its disposable to avoid unbounded</div><div class="line">	// memory growth.</div><div class="line">	[otherDisposable addDisposable:[RACDisposable disposableWithBlock:^&#123;</div><div class="line">		@strongify(otherDisposable);</div><div class="line">		[selfDisposable removeDisposable:otherDisposable];</div><div class="line">	&#125;]];</div></pre></td></tr></table></figure>
 <p><code>@unsafeify()</code> 就是 <code>__unsafe_unretained</code> 在RAC中的宏，但是这种用法即使在RAC源码中出现的都极少，不过 <code>__unsafe_unretained</code> 对比 <code>__weak</code> 来说在性能会比较好。</p>
-<p>######2. 接口设计原则<br>首先，并不是涉及到block引用外部对象的问题都会带来循环引用；其次，如果是我们自己设计一个类的时候，应该尽量的避免可能产生循环引用的问题(例如执行完block后将其置nil)，如果实在无法避免应该在接口里详细说明。<br><strong>例如：</strong>苹果框架中UIView封装的 <code>animateWithDuration</code> 方法、GCD等都<br>不会带来循环引用(注：NSTimer方法可能会带来循环引用); 还有一些有名的三方框架例如 <a href="https://github.com/SnapKit/Masonry" target="_blank" rel="external">Masonry</a> 也不会产生循环引用。 </p>
-<p>######3. swift 中的 weak strong dance<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">testFunc(closure:&#123; [weak self] in</div><div class="line">            if let strongSelf = self &#123;</div><div class="line">                // do something</div><div class="line">                print(strongSelf)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line"></div><div class="line">testFunc(closure:&#123; [weak self] in</div><div class="line">            guard let strongSelf = self else &#123;return&#125;</div><div class="line">            ///do something</div><div class="line">            print(strongSelf)</div><div class="line">        &#125;)</div></pre></td></tr></table></figure></p>
+<h6 id="2-接口设计原则"><a href="#2-接口设计原则" class="headerlink" title="2. 接口设计原则"></a>2. 接口设计原则</h6><p>首先，并不是涉及到block引用外部对象的问题都会带来循环引用；其次，如果是我们自己设计一个类的时候，应该尽量的避免可能产生循环引用的问题(例如执行完block后将其置nil)，如果实在无法避免应该在接口里详细说明。<br><strong>例如：</strong>苹果框架中UIView封装的 <code>animateWithDuration</code> 方法、GCD等都<br>不会带来循环引用(注：NSTimer方法可能会带来循环引用); 还有一些有名的三方框架例如 <a href="https://github.com/SnapKit/Masonry" target="_blank" rel="external">Masonry</a> 也不会产生循环引用。 </p>
+<h6 id="3-swift-中的-weak-strong-dance"><a href="#3-swift-中的-weak-strong-dance" class="headerlink" title="3. swift 中的 weak strong dance"></a>3. swift 中的 weak strong dance</h6><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">testFunc(closure:&#123; [weak self] in</div><div class="line">            if let strongSelf = self &#123;</div><div class="line">                // do something</div><div class="line">                print(strongSelf)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line"></div><div class="line">testFunc(closure:&#123; [weak self] in</div><div class="line">            guard let strongSelf = self else &#123;return&#125;</div><div class="line">            ///do something</div><div class="line">            print(strongSelf)</div><div class="line">        &#125;)</div></pre></td></tr></table></figure>
 <p>上面是根据可选绑定方式得来的较常规的写法，还有如下这种方式，可避免另外显示生成strongSelf</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">testFunc(closure:&#123; [weak self] in</div><div class="line">            withExtendedLifetime(self, &#123;</div><div class="line">               print(self ?? 0)</div><div class="line">            &#125;)</div><div class="line">        &#125;)</div></pre></td></tr></table></figure>
 <p>只是经 <code>withExtendedLifetime</code> 处理后的self 变为了一个可选类型。</p>
@@ -383,6 +461,27 @@
     <div>
       
         
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="https://hanl001.github.io/img/weixinimg.jpg" alt="hanl001 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://hanl001.github.io/img/alipayimg.jpg" alt="hanl001 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
 
       
     </div>
@@ -439,6 +538,13 @@
           
   <div class="comments" id="comments">
     
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
   </div>
 
 
@@ -477,7 +583,7 @@
                alt="hanl001" />
           <p class="site-author-name" itemprop="name">hanl001</p>
            
-              <p class="site-description motion-element" itemprop="description">衣袋渐宽终不悔，为伊消得人憔悴。</p>
+              <p class="site-description motion-element" itemprop="description">冰冻三尺非一日之寒, 滴水穿石非一日之功。</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -512,11 +618,11 @@
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/hanl001" target="_blank" title="github">
+                <a href="https://github.com/hanl001" target="_blank" title="GitHub">
                   
-                    <i class="fa fa-fw fa-globe"></i>
+                    <i class="fa fa-fw fa-github"></i>
                   
-                  github
+                  GitHub
                 </a>
               </span>
             
@@ -553,7 +659,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#由来"><span class="nav-number">1.</span> <span class="nav-text">由来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用途"><span class="nav-number">2.</span> <span class="nav-text">用途</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">3.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展"><span class="nav-number">4.</span> <span class="nav-text">扩展</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#由来"><span class="nav-number">1.</span> <span class="nav-text">由来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用途"><span class="nav-number">2.</span> <span class="nav-text">用途</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">3.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展"><span class="nav-number">4.</span> <span class="nav-text">扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-RAC中的宏"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">1. RAC中的宏</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-接口设计原则"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">2. 接口设计原则</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-swift-中的-weak-strong-dance"><span class="nav-number">4.0.0.3.</span> <span class="nav-text">3. swift 中的 weak strong dance</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -586,6 +692,26 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
 
         
       </div>
@@ -678,6 +804,26 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://hanl001.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://blog.hanling.faith/2017/05/18/你真的懂-weak-strong-dance-吗？/';
+          this.page.identifier = '2017/05/18/你真的懂-weak-strong-dance-吗？/';
+          this.page.title = '你真的懂 weak strong dance 吗？';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://hanl001.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -699,14 +845,327 @@
 
 
 
-  
-
-
-
 
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
