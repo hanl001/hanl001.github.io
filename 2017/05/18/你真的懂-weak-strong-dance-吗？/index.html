@@ -80,7 +80,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="内存管理," />
 
 
 
@@ -97,13 +97,14 @@
 
 
 <meta name="description" content="在阅读这篇文章之前，首先思考如下问题：  为什么 weak strong dance 能够避免循环引用？ 为什么不直接使用weak？ 使用 weak strong dance 的正确姿势？   本文从 weak strong dance 的 由来 用途 原理 扩展 逐步分析解答上述问题，但不仅仅只是解答问题。">
+<meta name="keywords" content="内存管理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="你真的懂 weak strong dance 吗？">
 <meta property="og:url" content="http://blog.hanling.faith/2017/05/18/你真的懂-weak-strong-dance-吗？/index.html">
 <meta property="og:site_name" content="冬天的冰激凌">
 <meta property="og:description" content="在阅读这篇文章之前，首先思考如下问题：  为什么 weak strong dance 能够避免循环引用？ 为什么不直接使用weak？ 使用 weak strong dance 的正确姿势？   本文从 weak strong dance 的 由来 用途 原理 扩展 逐步分析解答上述问题，但不仅仅只是解答问题。">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3748868-a6ed1dbc55142177.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-30T06:38:55.000Z">
+<meta property="og:updated_time" content="2017-07-15T07:04:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你真的懂 weak strong dance 吗？">
 <meta name="twitter:description" content="在阅读这篇文章之前，首先思考如下问题：  为什么 weak strong dance 能够避免循环引用？ 为什么不直接使用weak？ 使用 weak strong dance 的正确姿势？   本文从 weak strong dance 的 由来 用途 原理 扩展 逐步分析解答上述问题，但不仅仅只是解答问题。">
@@ -355,6 +356,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -495,6 +518,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/内存管理/" rel="tag"># 内存管理</a>
+          
+        </div>
+      
 
       
         
@@ -595,7 +624,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -606,7 +635,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -617,7 +646,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
