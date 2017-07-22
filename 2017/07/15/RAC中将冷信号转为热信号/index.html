@@ -80,7 +80,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Block," />
+  <meta name="keywords" content="RAC," />
 
 
 
@@ -96,17 +96,17 @@
 
 
 
-<meta name="description" content="在研究block的类型之前，首先我们要知道c类语言的程序编译后在内存中的分布(由高位向低位排序):  栈区:局部变量 堆区:由”alloc”开辟的空间就是在堆区 静态区(全局区): 静态变量、 全局变量（注:未初始化的在bss） 常量区: 常量 代码区: 二进制代码段   这里我们将MRC和ARC分开讨论：">
-<meta name="keywords" content="Block">
+<meta name="description" content="我在之前一篇文章说到过冷信号带来的问题, 有时候通过将其转为热信号就可以避免, 这篇文章将会介绍如何将一个冷信号转为热信号。">
+<meta name="keywords" content="RAC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Objective-C中Block的类型">
-<meta property="og:url" content="http://blog.hanling.faith/2016/12/06/Objective-C中Block的类型/index.html">
+<meta property="og:title" content="RAC中将冷信号转为热信号">
+<meta property="og:url" content="http://blog.hanling.faith/2017/07/15/RAC中将冷信号转为热信号/index.html">
 <meta property="og:site_name" content="冬天的冰激凌">
-<meta property="og:description" content="在研究block的类型之前，首先我们要知道c类语言的程序编译后在内存中的分布(由高位向低位排序):  栈区:局部变量 堆区:由”alloc”开辟的空间就是在堆区 静态区(全局区): 静态变量、 全局变量（注:未初始化的在bss） 常量区: 常量 代码区: 二进制代码段   这里我们将MRC和ARC分开讨论：">
-<meta property="og:updated_time" content="2017-07-15T07:08:36.000Z">
+<meta property="og:description" content="我在之前一篇文章说到过冷信号带来的问题, 有时候通过将其转为热信号就可以避免, 这篇文章将会介绍如何将一个冷信号转为热信号。">
+<meta property="og:updated_time" content="2017-07-15T07:05:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Objective-C中Block的类型">
-<meta name="twitter:description" content="在研究block的类型之前，首先我们要知道c类语言的程序编译后在内存中的分布(由高位向低位排序):  栈区:局部变量 堆区:由”alloc”开辟的空间就是在堆区 静态区(全局区): 静态变量、 全局变量（注:未初始化的在bss） 常量区: 常量 代码区: 二进制代码段   这里我们将MRC和ARC分开讨论：">
+<meta name="twitter:title" content="RAC中将冷信号转为热信号">
+<meta name="twitter:description" content="我在之前一篇文章说到过冷信号带来的问题, 有时候通过将其转为热信号就可以避免, 这篇文章将会介绍如何将一个冷信号转为热信号。">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.hanling.faith/2016/12/06/Objective-C中Block的类型/"/>
+  <link rel="canonical" href="http://blog.hanling.faith/2017/07/15/RAC中将冷信号转为热信号/"/>
 
 
 
 
 
-  <title>Objective-C中Block的类型 | 冬天的冰激凌</title>
+  <title>RAC中将冷信号转为热信号 | 冬天的冰激凌</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -314,7 +314,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.hanling.faith/2016/12/06/Objective-C中Block的类型/">
+    <link itemprop="mainEntityOfPage" href="http://blog.hanling.faith/2017/07/15/RAC中将冷信号转为热信号/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hanl001">
@@ -331,7 +331,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Objective-C中Block的类型</h1>
+          <h1 class="post-title" itemprop="name headline">RAC中将冷信号转为热信号</h1>
         
 
         <div class="post-meta">
@@ -343,8 +343,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-06T16:11:00+08:00">
-                2016-12-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-15T10:45:16+08:00">
+                2017-07-15
               </time>
             
 
@@ -384,9 +384,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/12/06/Objective-C中Block的类型/#comments" itemprop="discussionUrl">
+                <a href="/2017/07/15/RAC中将冷信号转为热信号/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/06/Objective-C中Block的类型/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/07/15/RAC中将冷信号转为热信号/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -416,38 +416,57 @@
       
 
       
-        <p><strong>在研究block的类型之前，首先我们要知道c类语言的程序编译后在内存中的分布(由高位向低位排序):</strong></p>
-<ol>
-<li><code>栈区</code>:局部变量</li>
-<li><code>堆区</code>:由”alloc”开辟的空间就是在堆区</li>
-<li><code>静态区(全局区)</code>: 静态变量、 全局变量（注:未初始化的在bss）</li>
-<li><code>常量区</code>: 常量</li>
-<li><code>代码区</code>: 二进制代码段 </li>
-</ol>
-<p>这里我们将MRC和ARC分开讨论：</p>
+        <p>我在之前一篇<a href="http://www.jianshu.com/p/1e073aefc5a4" target="_blank" rel="external">文章</a>说到过冷信号带来的问题, 有时候通过将其转为热信号就可以避免, 这篇文章将会介绍如何将一个冷信号转为热信号。</p>
 <a id="more"></a>
-<hr>
-<h3 id="在MRC下有三种类型的block"><a href="#在MRC下有三种类型的block" class="headerlink" title="在MRC下有三种类型的block"></a>在MRC下有三种类型的block</h3><p><strong><code>NSGlobalBlock:</code></strong>  位于内存全局区、不调用外部变量或者仅调用静态区常量区的”变量”<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">CGFloat gFloat = 1.2;</div><div class="line">NSString *gStr = @&quot;全局字符串&quot;;</div><div class="line">@implementation test  </div><div class="line">-(void)globalTest &#123; </div><div class="line">    //注:在本例中NSSting分别在内存中的哪个区域呢？</div><div class="line">    //1、不调用外部变量的block</div><div class="line">    void(^gblock1)(NSString *) = ^(NSString *str)&#123; </div><div class="line">         NSLog(@&quot;%@&quot;,str);</div><div class="line">     &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock1);</div><div class="line">    gblock1(@&quot;传入字符串常量&quot;);</div><div class="line">    //2、仅调用全局变量的block</div><div class="line">    void(^gblock2)(void) = ^&#123; </div><div class="line">      NSLog(@&quot;%lf&quot;,gFloat);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock2);</div><div class="line">    gblock2();</div><div class="line">    void(^gblock3)(void) = ^&#123; </div><div class="line">      NSLog(@&quot;%@&quot;,gStr);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock3);</div><div class="line">    gblock3();</div><div class="line">   //3、仅调用静态变量的block</div><div class="line">    static CGFloat sFloat = 2.1;</div><div class="line">    void(^gblock4)(void) = ^&#123;</div><div class="line">      NSLog(@&quot;%lf&quot;,sFloat);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock4);</div><div class="line">    gblock4();</div><div class="line">    static NSString *staStr = @&quot;静态字符串&quot;;</div><div class="line">    void(^gblock5)(void) = ^&#123;</div><div class="line">      NSLog(@&quot;%@&quot;,staStr);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,gblock5);</div><div class="line">    gblock5();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>控制台输出:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 14:50:22.928972 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001050&gt;</div><div class="line">2016-12-06 14:50:22.929176 test_demo[18845:866060] 传入字符串常量</div><div class="line">2016-12-06 14:50:22.929221 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001090&gt;</div><div class="line">2016-12-06 14:50:22.929246 test_demo[18845:866060] 1.200000</div><div class="line">2016-12-06 14:50:22.929268 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x1000010d0&gt;</div><div class="line">2016-12-06 14:50:22.929288 test_demo[18845:866060] 全局字符串</div><div class="line">2016-12-06 14:50:22.929307 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001110&gt;</div><div class="line">2016-12-06 14:50:22.929320 test_demo[18845:866060] 2.100000</div><div class="line">2016-12-06 14:50:22.929338 test_demo[18845:866060] &lt;__NSGlobalBlock__: 0x100001150&gt;</div><div class="line">2016-12-06 14:50:22.929354 test_demo[18845:866060] 静态字符串</div></pre></td></tr></table></figure></p>
-<p><strong><code>NSStackBlock:</code></strong> 位于内存栈区、仅调用栈区变量<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">-(void)stackTest &#123;</div><div class="line">    //局部变量</div><div class="line">    CGFloat sFloat = 1.1;</div><div class="line">    void(^sBlock1)(void) = ^&#123;</div><div class="line">      NSLog(@&quot;%lf&quot;,sFloat);</div><div class="line">    &#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,sBlock1);</div><div class="line">    sBlock1();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>控制台输出:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 15:04:04.606908 test_demo[18880:873406] &lt;__NSStackBlock__: 0x7fff5fbff6d8&gt;</div><div class="line">2016-12-06 15:04:04.607076 test_demo[18880:873406] 1.100000</div></pre></td></tr></table></figure></p>
-<p><strong><code>NSMallocBlock:</code></strong> 位于内存堆区、由栈区copy到堆区<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> -(void)mallocTest &#123;</div><div class="line">    //局部变量</div><div class="line">    CGFloat sFloat = 1.1;&lt;/br&gt;</div><div class="line">    void(^sBlock1)(void) = ^&#123;&lt;/br&gt;        NSLog(@&quot;%lf&quot;,sFloat);</div><div class="line">    &#125;;</div><div class="line"> //    NSLog(@&quot;%@&quot;,sBlock1);</div><div class="line">//    sBlock1();&lt;/br&gt;</div><div class="line">    void(^mBlock1)(void) = [sBlock1 copy];</div><div class="line">    NSLog(@&quot;%@&quot;,mBlock1);&lt;/br&gt;</div><div class="line">    //@property(copy,nonatomic)void(^mBlock2)(void);</div><div class="line">    self.mBlock2 = sBlock1;</div><div class="line">    NSLog(@&quot;%@&quot;,self.mBlock2);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>控制台输出:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 15:37:07.306385 test_demo[28582:914325] &lt;__NSMallocBlock__: 0x100402f00&gt;</div><div class="line">2016-12-06 15:37:07.306699 test_demo[28582:914325] &lt;__NSMallocBlock__: 0x100600000&gt;</div></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="在ARC下，仅存在-NSGlobalBlock-、NSMallocBlock-两种block"><a href="#在ARC下，仅存在-NSGlobalBlock-、NSMallocBlock-两种block" class="headerlink" title="在ARC下，仅存在 NSGlobalBlock 、NSMallocBlock 两种block"></a>在ARC下，仅存在 <code>NSGlobalBlock</code> 、<code>NSMallocBlock</code> 两种block</h3><p>我们切换到arc环境，并且将 <code>mallocTest</code> 中的如下代码注释取消<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//    NSLog(@&quot;%@&quot;,sBlock1);</div><div class="line">//    sBlock1();</div></pre></td></tr></table></figure></p>
-<p>运行得到输出结果：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 15:52:42.884091 test_demo[35541:942156] &lt;__NSMallocBlock__: 0x100502eb0&gt;</div><div class="line">2016-12-06 15:52:42.884379 test_demo[35541:942156] 1.100000</div><div class="line">2016-12-06 15:52:42.884416 test_demo[35541:942156] &lt;__NSMallocBlock__: 0x100502eb0&gt;</div><div class="line">2016-12-06 15:52:42.884446 test_demo[35541:942156] &lt;__NSMallocBlock__: 0x100502eb0&gt;</div></pre></td></tr></table></figure></p>
-<p>由此可以判断，在arc下没有 <code>NSStackBlock</code> 类型变量、并且 <code>copy</code> 操作只是对堆区 <code>block</code> 进行了一次引用，既然如此我接着对  <code>NSGlobalBlock</code> 、<code>NSMallocBlock</code> 进行copy操作：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">static NSString *staStr = @&quot;静态字符串&quot;;</div><div class="line">void(^gblock5)(void) = ^&#123;</div><div class="line">    NSLog(@&quot;%@&quot;,staStr);</div><div class="line">&#125;;</div><div class="line">NSLog(@&quot;%@&quot;,gblock5);</div><div class="line">gblock5();</div><div class="line">void(^copyBlock)(void) = [gblock5 copy];</div><div class="line">NSLog(@&quot;%@&quot;,copyBlock);</div></pre></td></tr></table></figure></p>
-<p>控制台输出:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 16:24:36.832399 test_demo[35671:957646] &lt;__NSGlobalBlock__: 0x100002170&gt;</div><div class="line">2016-12-06 16:24:36.832415 test_demo[35671:957646] 静态字符串</div><div class="line">2016-12-06 16:24:36.832438 test_demo[35671:957646] &lt;__NSGlobalBlock__: 0x100002170&gt;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">void(^mBlock1)(void) = [sBlock1 copy];</div><div class="line">NSLog(@&quot;%@&quot;,mBlock1);</div><div class="line">void(^copyBlock)(void) = [mBlock1 copy];</div><div class="line">NSLog(@&quot;%@&quot;,copyBlock);</div></pre></td></tr></table></figure>
-<p>控制台输出:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2016-12-06 16:27:10.688490 test_demo[35702:959578] &lt;__NSMallocBlock__: 0x1006000c0&gt;</div><div class="line">2016-12-06 16:27:10.688571 test_demo[35702:959578] &lt;__NSMallocBlock__: 0x1006000c0&gt;</div></pre></td></tr></table></figure></p>
-<hr>
-<p><strong>总结：</strong></p>
-<ol>
-<li>当block中没有引用任何外部变量时或者仅仅调用静态区变量时，编译器直接将block放在静态区(减少堆区的占用有利于性能的)</li>
-<li>copy 操作对将NSStackBlock拷贝到堆区、对另外两种类型只是强引用</li>
-<li>arc下是没有NSStackBlock类型block的(block被当做对象处理)</li>
+<h2 id="方式1-subscribe"><a href="#方式1-subscribe" class="headerlink" title="方式1: subscribe"></a>方式1: subscribe</h2><p> 直接上代码吧</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id&lt;RACSubscriber&gt;  _Nonnull subscriber) &#123;</div><div class="line">    [subscriber sendNext:@&quot;signal&quot;];</div><div class="line">    return nil;</div><div class="line">&#125;];</div><div class="line">RACSubject *subject = [RACSubject subject];</div><div class="line">[subject subscribeNext:^(id  _Nullable x) &#123;</div><div class="line">    NSLog(@&quot;%@&quot;,x);</div><div class="line">&#125;];</div><div class="line">[signal1 subscribe:subject];</div></pre></td></tr></table></figure>
+<p>首先RACSubject 是遵守 <code>RACSubscriber</code> 协议的，所以我们可以将 subject 当作 subscriber 传入subscribe方法中。subscripe 的实现如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- (RACDisposable *)subscribe:(id&lt;RACSubscriber&gt;)subscriber &#123;</div><div class="line">	NSCParameterAssert(subscriber != nil);</div><div class="line"></div><div class="line">	RACCompoundDisposable *disposable = [RACCompoundDisposable compoundDisposable];</div><div class="line">	subscriber = [[RACPassthroughSubscriber alloc] initWithSubscriber:subscriber signal:self disposable:disposable];</div><div class="line"></div><div class="line">	if (self.didSubscribe != NULL) &#123;</div><div class="line">		RACDisposable *schedulingDisposable = [RACScheduler.subscriptionScheduler schedule:^&#123;</div><div class="line">			RACDisposable *innerDisposable = self.didSubscribe(subscriber);</div><div class="line">			[disposable addDisposable:innerDisposable];</div><div class="line">		&#125;];</div><div class="line"></div><div class="line">		[disposable addDisposable:schedulingDisposable];</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	return disposable;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到 <code>self.didSubscribe(subscriber);</code> 这里 调用了signal 的 didSubscribe 这个block ，并且将 subscriber(也就是subject) 作为参数传入。 看过<a href="http://www.jianshu.com/p/1e073aefc5a4" target="_blank" rel="external">上篇文章</a>你就会知道，第一段代码中block会被执行，也就是 <code>[subscriber sendNext:@&quot;signal&quot;];</code> 也会被执行，这里的subscriber其实还是我们创建的subject，这样的话，第一段代码其实可以简化为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">RACSubject *subject = [RACSubject subject];</div><div class="line">[subject subscribeNext:^(id  _Nullable x) &#123;</div><div class="line">    NSLog(@&quot;%@&quot;,x);</div><div class="line">&#125;];</div><div class="line">[subject sendNext:@&quot;signal&quot;];</div></pre></td></tr></table></figure>
+<p>不过平时我们不会这么去使用，RACSignal+Operationsn 这个类别中提供了更多优良姿势，下面一一介绍。</p>
+<h2 id="方式2-multicast"><a href="#方式2-multicast" class="headerlink" title="方式2: multicast"></a>方式2: multicast</h2><p>用法如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">RACSignal *signal1 = [RACSignal createSignal:^RACDisposable * _Nullable(id&lt;RACSubscriber&gt;  _Nonnull subscriber) &#123;</div><div class="line">    [subscriber sendNext:@&quot;signal1&quot;];</div><div class="line">    return nil;</div><div class="line">&#125;];</div><div class="line">RACSubject *subject1 = [RACSubject subject];</div><div class="line">RACMulticastConnection *connection = [signal1 multicast:subject1];</div><div class="line">[connection.signal subscribeNext:^(id  _Nullable x) &#123;</div><div class="line">    NSLog(@&quot;%@&quot;,x);</div><div class="line">&#125;];</div><div class="line">[connection connect];</div></pre></td></tr></table></figure>
+<p>首先我们看一下 muticast 的实现</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- (RACMulticastConnection *)multicast:(RACSubject *)subject &#123;</div><div class="line">	[subject setNameWithFormat:@&quot;[%@] -multicast: %@&quot;, self.name, subject.name];</div><div class="line">	RACMulticastConnection *connection = [[RACMulticastConnection alloc] initWithSourceSignal:self subject:subject];</div><div class="line">	return connection;</div><div class="line">&#125;</div><div class="line">- (instancetype)initWithSourceSignal:(RACSignal *)source subject:(RACSubject *)subject &#123;</div><div class="line">	NSCParameterAssert(source != nil);</div><div class="line">	NSCParameterAssert(subject != nil);</div><div class="line"></div><div class="line">	self = [super init];</div><div class="line"></div><div class="line">	_sourceSignal = source;</div><div class="line">	_serialDisposable = [[RACSerialDisposable alloc] init];</div><div class="line">	_signal = subject;</div><div class="line">	</div><div class="line">	return self;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其实就是生成了一个 RACMulticastConnection 实例，并将 signal(sourceSignal) 和 subject(signal) 分别保存起来。<br>所以，下面对 connection.signal 的订阅 就是对subject的订阅。</p>
+<p>接下来再来看一下 connect 的实现</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- (RACDisposable *)connect &#123;</div><div class="line">	BOOL shouldConnect = OSAtomicCompareAndSwap32Barrier(0, 1, &amp;_hasConnected);</div><div class="line"></div><div class="line">	if (shouldConnect) &#123;</div><div class="line">		self.serialDisposable.disposable = [self.sourceSignal subscribe:_signal];</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	return self.serialDisposable;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到 <code>[self.sourceSignal subscribe:_signal];</code> 这里其实就是 <code>[signal subscripe:subject]</code> 不再多说。<br>这里有必要说一下 <code>OSAtomicCompareAndSwap32Barrier</code><br>原型如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">bool OSAtomicCompareAndSwap32Barrier( int32_t __oldValue, int32_t __newValue, volatile int32_t *__theValue );</div></pre></td></tr></table></figure>
+<p>如果 <code>__theValue</code> 的值是 <code>__oldValue</code> 该方法会将 <code>__theValue</code> 由 <code>__oldValue</code> 换为 <code>__newValue</code> 并且返回YES,而如果 <code>__theValue</code> 的值已经是 <code>__newValue</code>，则不做交换并且返回NO。因此 connect 方法中 subscribe 方法只会被执行一次。 </p>
+<p>除了connect之外，RACMulticastConnection 类中还提供了一个autoconnect方法，实现如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- (RACSignal *)autoconnect &#123;</div><div class="line">	__block volatile int32_t subscriberCount = 0;</div><div class="line"></div><div class="line">	return [[RACSignal</div><div class="line">		createSignal:^(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">			OSAtomicIncrement32Barrier(&amp;subscriberCount);</div><div class="line"></div><div class="line">			RACDisposable *subscriptionDisposable = [self.signal subscribe:subscriber];</div><div class="line">			RACDisposable *connectionDisposable = [self connect];</div><div class="line"></div><div class="line">			return [RACDisposable disposableWithBlock:^&#123;</div><div class="line">				[subscriptionDisposable dispose];</div><div class="line"></div><div class="line">				if (OSAtomicDecrement32Barrier(&amp;subscriberCount) == 0) &#123;</div><div class="line">					[connectionDisposable dispose];</div><div class="line">				&#125;</div><div class="line">			&#125;];</div><div class="line">		&#125;]</div><div class="line">		setNameWithFormat:@&quot;[%@] -autoconnect&quot;, self.signal.name];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>他会返回一个RACDynamicSignal ，但这个信号被订阅时执行connect方法，因此使用autoconnect的姿势如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">RACSignal *signal1 = [RACSignal createSignal:^RACDisposable * _Nullable(id&lt;RACSubscriber&gt;  _Nonnull subscriber) &#123;</div><div class="line">    [subscriber sendNext:@&quot;signal1&quot;];</div><div class="line">    return nil;</div><div class="line">&#125;];</div><div class="line">RACSubject *subject1 = [RACSubject subject];</div><div class="line">RACMulticastConnection *connection = [signal1 multicast:subject1];</div><div class="line">RACSignal *autoSignal = [connection autoconnect];</div><div class="line">[autoSignal subscribeNext:^(id  _Nullable x) &#123;</div><div class="line">    NSLog(@&quot;%@&quot;,x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>RACMulticastConnection 用于将一个信号的订阅分享给多个订阅者，你需要使用 <code>[RACSignal publish]</code> 或者 <code>[RACSignal multicast:]</code> 来实例RACMulticastConnection对象，并且使用 <code>connect</code> 或 <code>autoconnect</code> 来执行订阅</p>
+</blockquote>
+<h2 id="方式3-publish"><a href="#方式3-publish" class="headerlink" title="方式3: publish"></a>方式3: publish</h2><p>在 RACSignal+Operations 这个类别中提供了publish方法来生成RACMulticastConnection示例，实现如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- (RACMulticastConnection *)publish &#123;</div><div class="line">	RACSubject *subject = [[RACSubject subject] setNameWithFormat:@&quot;[%@] -publish&quot;, self.name];</div><div class="line">	RACMulticastConnection *connection = [self multicast:subject];</div><div class="line">	return connection;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该方法只是对 multicast 方法的一个简单封装(在内部创建一个subject并对其multicast)，使用 publish 更为方便快捷。使用如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id&lt;RACSubscriber&gt;  _Nonnull subscriber) &#123;</div><div class="line">     [subscriber sendNext:@&quot;signal1&quot;];</div><div class="line">     return nil;</div><div class="line">&#125;];</div><div class="line">RACMulticastConnection *connection = [signal publish];</div><div class="line">[connection.signal subscribeNext:^(id  _Nullable x) &#123;</div><div class="line">     NSLog(@&quot;%@&quot;,x);</div><div class="line">&#125;];//相当于 [subject subscribeNext:...]</div><div class="line">[connection connect]; //相当于 [subject sendNext:@&quot;signal1&quot;]</div></pre></td></tr></table></figure>
+<p><strong>在 RACSignal+Operations 中除了 multicast 与 publish 方法外，还提供了 replay 、replayLast、replayLazily 这三个方法。其实他们都是对 multicast 方法的封装</strong></p>
+<h2 id="方式4-replay"><a href="#方式4-replay" class="headerlink" title="方式4: replay"></a>方式4: replay</h2><p>实现如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- (RACSignal *)replay &#123;</div><div class="line">	RACReplaySubject *subject = [[RACReplaySubject subject] setNameWithFormat:@&quot;[%@] -replay&quot;, self.name];</div><div class="line"></div><div class="line">	RACMulticastConnection *connection = [self multicast:subject];</div><div class="line">	[connection connect];</div><div class="line"></div><div class="line">	return connection.signal;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>publish中操作的是RACSubject并且没有执行connect方法然后返回的是connection实例，而replay是对RACReplaySubject的操作，并且执行了connect方法，返回值是RACReplaySubject的实例。那么我们接受到replay的返回值其实就是拿到了由冷信号转换得到的RACReplaySubject，由于执行过connect方法，所以这个热信号已经进行过sendnext，后续只需要对其订阅即可触发。使用如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id&lt;RACSubscriber&gt;  _Nonnull subscriber) &#123;</div><div class="line">     [subscriber sendNext:@&quot;signal1&quot;];</div><div class="line">     return nil;</div><div class="line">&#125;];</div><div class="line">RACReplaySubject *rpSubjecxt = [signal replay]; //内部已执行 [rpSubjecxt sendNext:@&quot;signal1&quot;]</div><div class="line">[rpSubjecxt subscribeNext:^(id  _Nullable x) &#123;</div><div class="line">    NSLog(@&quot;%@&quot;,x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<h2 id="方式5-replayLast"><a href="#方式5-replayLast" class="headerlink" title="方式5: replayLast"></a>方式5: replayLast</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- (RACSignal *)replayLast &#123;</div><div class="line">	RACReplaySubject *subject = [[RACReplaySubject replaySubjectWithCapacity:1] setNameWithFormat:@&quot;[%@] -replayLast&quot;, self.name];</div><div class="line"></div><div class="line">	RACMulticastConnection *connection = [self multicast:subject];</div><div class="line">	[connection connect];</div><div class="line"></div><div class="line">	return connection.signal;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到 replayLast 的实现与replay想比只是在对RACReplaySubject的初始化方法，这里将RACReplaySubject中valuesReceived数组的capacity设为1, 所以当这个RACReplaySubject被订阅时只会执行“在他之前的的最后一个” sendNext。 replayLast 顾名思义只会重复订阅之前最后的一条sendNext。</p>
+<h2 id="方式6-replayLazily"><a href="#方式6-replayLazily" class="headerlink" title="方式6: replayLazily"></a>方式6: replayLazily</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- (RACSignal *)replayLazily &#123;</div><div class="line">	RACMulticastConnection *connection = [self multicast:[RACReplaySubject subject]];</div><div class="line">	return [[RACSignal</div><div class="line">		defer:^&#123;</div><div class="line">			[connection connect];</div><div class="line">			return connection.signal;</div><div class="line">		&#125;]</div><div class="line">		setNameWithFormat:@&quot;[%@] -replayLazily&quot;, self.name];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>和replay不同的是这里将 connect 操作 套在了 defer 方法里面(defer将RACReplaySubject用RACDynamicSignal包裹起来)。</p>
+<p>我们来看defer的实现</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">+ (RACSignal *)defer:(RACSignal&lt;id&gt; * (^)(void))block &#123;</div><div class="line">	NSCParameterAssert(block != NULL);</div><div class="line"></div><div class="line">	return [[RACSignal createSignal:^(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">		return [block() subscribe:subscriber];</div><div class="line">	&#125;] setNameWithFormat:@&quot;+defer:&quot;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>只有 defer 方法返回的信号被订阅之后才会执行  <code>return [block() subscribe:subscriber];</code> ，<br>将 <code>return [block() subscribe:subscriber];</code>  展开就是</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[connection connect];</div><div class="line">return [connection.signal subscripe:subscriber];</div></pre></td></tr></table></figure>
+<p>因此 replayLazily 返回的信号只有在被订阅的时候才会执行 <code>[connection.signal subscripe:subscriber]</code>， replayLazily 叫做 replayLazily 再合适不过。</p>
+<p>replayLazily 的使用如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id&lt;RACSubscriber&gt;  _Nonnull subscriber) &#123;</div><div class="line">        [subscriber sendNext:@&quot;signal1&quot;];</div><div class="line">        [subscriber sendNext:@&quot;signal2&quot;];</div><div class="line">        return nil;</div><div class="line">    &#125;];</div><div class="line">RACSignal *rplaSignal = [signal replayLazily]; </div><div class="line">[rplaSignal subscribeNext:^(id  _Nullable x) &#123;</div><div class="line">     NSLog(@&quot;%@&quot;,x);</div><div class="line">&#125;]; // rplaSignal 被订阅时 才会执行内部的 `[connection.signal(RACReplaySubject) subscripe:subscriber]` 操作</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>通过冷信号subscribe一个热信号即可通过将热信号当作subscriber(订阅者)来进行sendNext等操作，也就是将冷信号转为了热信号；</li>
+<li>multicast就是基于上述原理来实现的；</li>
+<li>publish replay replayLast replayLazily 都是基于 multicast 的封装,满足上的不同使用场景。</li>
 </ol>
-<p>附<a href="https://github.com/hanl001/blockType_test" target="_blank" rel="external">测试代码</a></p>
 
       
     </div>
@@ -498,7 +517,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Block/" rel="tag"># Block</a>
+            <a href="/tags/RAC/" rel="tag"># RAC</a>
           
         </div>
       
@@ -511,15 +530,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/05/18/你真的懂-weak-strong-dance-吗？/" rel="next" title="你真的懂 weak strong dance 吗？">
+                <i class="fa fa-chevron-left"></i> 你真的懂 weak strong dance 吗？
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/14/NSLogger的使用/" rel="prev" title="NSLogger的使用">
-                NSLogger的使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -675,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#在MRC下有三种类型的block"><span class="nav-number">1.</span> <span class="nav-text">在MRC下有三种类型的block</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在ARC下，仅存在-NSGlobalBlock-、NSMallocBlock-两种block"><span class="nav-number">2.</span> <span class="nav-text">在ARC下，仅存在 NSGlobalBlock 、NSMallocBlock 两种block</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#方式1-subscribe"><span class="nav-number">1.</span> <span class="nav-text">方式1: subscribe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式2-multicast"><span class="nav-number">2.</span> <span class="nav-text">方式2: multicast</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式3-publish"><span class="nav-number">3.</span> <span class="nav-text">方式3: publish</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式4-replay"><span class="nav-number">4.</span> <span class="nav-text">方式4: replay</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式5-replayLast"><span class="nav-number">5.</span> <span class="nav-text">方式5: replayLast</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式6-replayLazily"><span class="nav-number">6.</span> <span class="nav-text">方式6: replayLazily</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -827,9 +846,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://blog.hanling.faith/2016/12/06/Objective-C中Block的类型/';
-          this.page.identifier = '2016/12/06/Objective-C中Block的类型/';
-          this.page.title = 'Objective-C中Block的类型';
+          this.page.url = 'http://blog.hanling.faith/2017/07/15/RAC中将冷信号转为热信号/';
+          this.page.identifier = '2017/07/15/RAC中将冷信号转为热信号/';
+          this.page.title = 'RAC中将冷信号转为热信号';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://hanl001.disqus.com/embed.js';
